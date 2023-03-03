@@ -8,17 +8,26 @@ public class DeckManager : MonoBehaviour
 
 	private GameObject[] cards;
 	private Sprite[] cardImages;
-	private List<GameObject>[] hands; // First hand is player's hand
+	private List<GameObject>[] hands; // First hand is player's hand, rest of hands go clockwise around the 'table'
 	private List<GameObject> extraCards;
+
+	private SimpleOpponentTest[] opponents; //test
 
 	private float cardWidth;
 	private float cardHeight;
 
 	private const int DECK_LENGTH = 52;
 	private const int CARDS_PER_SUIT = 13;
+	private const int NUMBER_PASSING_PHASES = 4;
 
   private void Start()
   {
+		opponents = new SimpleOpponentTest[3];
+		for (int i = 0; i < opponents.Length; i++)
+		{
+			opponents[i] = new SimpleOpponentTest();
+		}
+
 		// Initialize Deck and load card images
 		cards = new GameObject[DECK_LENGTH];
     cardImages = Resources.LoadAll<Sprite>("English_pattern_playing_cards_deck");//
@@ -27,8 +36,6 @@ public class DeckManager : MonoBehaviour
 			GameObject newCard = new GameObject();
 			newCard.AddComponent<SpriteRenderer>();
 			newCard.GetComponent<SpriteRenderer>().sprite = cardImages[i];
-			newCard.AddComponent<Card>();
-			newCard.GetComponent<Card>().selectOffset = 1f;
 			newCard.AddComponent<BoxCollider2D>();
 			newCard.SetActive(false);
 			newCard.transform.SetParent(transform);
@@ -40,6 +47,11 @@ public class DeckManager : MonoBehaviour
 		cardHeight = cardImages[0].bounds.size.y;
 
   }
+
+	public List<GameObject> getHand(int index)
+	{
+		return hands[index];
+	}
 
 	public void DealHands()
 	{
@@ -63,6 +75,13 @@ public class DeckManager : MonoBehaviour
 		{
 			SortHand(hand);
 		}
+
+		// Assign hands to opponents
+		for (int i = 0; i < opponents.Length; i++)
+		{
+			opponents[i].hand = hands[i + 1]; // First hand is player hand, so we add 1
+		}
+
 
 		// Set aside extra cards if there are leftovers after dealing
 		if (DECK_LENGTH % numPlayers != 0)
@@ -106,8 +125,6 @@ public class DeckManager : MonoBehaviour
 				card.SetActive(true);
 			}
 		// }
-
-		
 	}
 
 	public void Shuffle()
@@ -121,6 +138,58 @@ public class DeckManager : MonoBehaviour
 		}
 	}
 
+	public void PassCards()
+	{
+		List<GameObject[]> passedCards = new List<GameObject[]>();
+		passedCards.Add(GetComponent<GameManager>().GetSelectedCards().ToArray());
+
+		foreach (SimpleOpponentTest opponent in opponents)
+		{
+			passedCards.Add(opponent.GetPassingCards());
+		}
+
+		switch (PhaseManager.GetCurrRound() % NUMBER_PASSING_PHASES)
+		{
+			case 1: // Pass left
+				for (int i = 0; i < numPlayers - 1; i++)
+				{
+					PassCards(passedCards[i], i, i + 1);
+				}
+				PassCards(passedCards[numPlayers - 1], numPlayers - 1, 0);
+				break;
+
+			case 2: // Pass right
+				for (int i = numPlayers - 1; i > 0 ; i--)
+				{
+					PassCards(passedCards[i], i, i - 1);
+				}
+				PassCards(passedCards[0], 0, numPlayers - 1);
+				break;
+
+			case 3: // Pass diagonally
+				if (numPlayers > 3)
+				{
+					
+				}
+				break;
+		}
+	}
+
+	private void PassCards(GameObject[] cards, int senderIndex, int recipientIndex)
+	{
+		List<GameObject> senderHand = hands[senderIndex];
+		List<GameObject> recipientHand = hands[recipientIndex];
+
+		foreach (GameObject card in cards)
+		{
+			card.SetActive(false);
+			senderHand.Remove(card);
+			recipientHand.Add(card);
+		}
+
+		SortHand(hands[recipientIndex]);
+	}
+
 	private string GetCardValue(GameObject card)
 	{
 		string value = "";
@@ -130,7 +199,7 @@ public class DeckManager : MonoBehaviour
 		int imageIndex = int.Parse(imageName.Split('_')[^1]);
 
 		int cardValue = imageIndex % CARDS_PER_SUIT;
-		
+
 		// Keeps face card values as letters
 		if (cardValue > 10)
 		{
@@ -168,11 +237,11 @@ public class DeckManager : MonoBehaviour
 		string cardNumVal = cardVal.Substring(0, cardVal.Length - 1);
 		switch (cardNumVal)
 		{
-			case "J": intVals[0] = 11; break;
-			case "Q": intVals[0] = 12; break;
-			case "K": intVals[0] = 13; break;
-			case "A": intVals[0] = 14; break;
-			default: intVals[0] = int.Parse(cardNumVal); break;
+			case "J": intVals[0] = 10; break;
+			case "Q": intVals[0] = 11; break;
+			case "K": intVals[0] = 12; break;
+			case "A": intVals[0] = 13; break;
+			default: intVals[0] = (int.Parse(cardNumVal) - 1); break;
 		}
 
 		string suit = "" + cardVal[^1];

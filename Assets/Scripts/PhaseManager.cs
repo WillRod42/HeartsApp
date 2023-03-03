@@ -15,10 +15,12 @@ public class PhaseManager : MonoBehaviour
 	public static event ScoringPhase onScoringPhase;
 
 	private static Phase currPhase;
+	private static int currRound;
 
   private void Start()
   {
     currPhase = Phase.Dealing;
+		currRound = 1;
   }
 
 	private void UpdatePhase()
@@ -38,14 +40,19 @@ public class PhaseManager : MonoBehaviour
 		return currPhase;
 	}
 
+	public static int GetCurrRound()
+	{
+		return currRound;
+	}
+
 	public void RunPhase()
 	{
 		switch (currPhase)
 		{
 			case Phase.Dealing: onDealingPhase(); break;
-			case Phase.Passing: /* onPassingPhase(); */ break;
+			case Phase.Passing: onPassingPhase(); break;
 			case Phase.Playing: /* onPlayingPhase(); */ break;
-			case Phase.Scoring: /* onScoringPhase(); */ break;
+			case Phase.Scoring: /* onScoringPhase(); */ currRound++; break;
 		}
 
 		UpdatePhase();
