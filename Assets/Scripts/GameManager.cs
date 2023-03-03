@@ -9,17 +9,18 @@ public class GameManager : MonoBehaviour
 
 	public static int[] scores;
 	public static bool isHeartsBroken;
-
-	[SerializeField]
-	private const int SCORE_QUEEN_OF_SPADES = 13;
+	public static bool addExtraCardsToTrick;
 
 	private DeckManager deck;
+	private TrickManager trickManager;
 	private List<GameObject> selectedCards;
-	private List<GameObject> trick;
+	
 
   private void Start()
   {
+		addExtraCardsToTrick = false;
 		deck = GetComponent<DeckManager>();
+		trickManager = GetComponent<TrickManager>();
 		selectedCards = new List<GameObject>();
 		scores = new int[deck.numPlayers];
 		isHeartsBroken = false;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
 
 		PhaseManager.onPassingPhase += deck.PassCards;
 		PhaseManager.onPassingPhase += deck.PlaceCards;
+		PhaseManager.onPassingPhase += ClearSelectedCards;
 		PhaseManager.onPassingPhase += deck.LogHands;
   }
 
@@ -40,53 +42,15 @@ public class GameManager : MonoBehaviour
 		return selectedCards;
 	}
 
-	public bool CheckIfLegalPlay(GameObject playedCard, GameObject leadCard, List<GameObject> playerHand)
+	public static void BreakHearts()
 	{
-		string playedSuit = "" + deck.GetCardValue(playedCard)[^1];
-		string leadSuit = "" + deck.GetCardValue(leadCard)[^1];
-		return playedSuit == leadSuit || !deck.HandHasSuit(playerHand, leadSuit); 
+		isHeartsBroken = true;
+		addExtraCardsToTrick = true;
 	}
 
-	public bool CheckIfLegalPlay(GameObject playedCard)
+	private void ClearSelectedCards()
 	{
-		string suit = "" + deck.GetCardValue(playedCard)[^1];
-		return isHeartsBroken || suit != "H";
-	}
-
-	public bool PlayCard(GameObject playedCard, int playerIndex)
-	{
-		List<GameObject> hand = deck.GetHand(playerIndex);
-		if ((trick.Count == 0 && CheckIfLegalPlay(playedCard)) || CheckIfLegalPlay(playedCard, trick[0], hand))
-		{
-			trick.Add(playedCard);
-			hand.Remove(playedCard);
-
-			if (trick.Count == deck.numPlayers)
-			{
-				foreach (GameObject card in trick)
-				{
-					scores[playerIndex] += ScoreCard(deck.GetCardValue(card));
-				}
-
-				trick.Clear();
-			}
-
-			return true;
-		}
-
-		return false;
-	}
-
-	public int ScoreCard(string cardVal)
-	{
-		if (cardVal == "QS")
-		{
-			return SCORE_QUEEN_OF_SPADES;
-		}
-		else
-		{
-			return cardVal[^1] == 'H' ? 1 : 0;
-		}
+		selectedCards.Clear();
 	}
 
 	// Decides what tapping/left clicking non-ui elements does depending on the phase
@@ -117,7 +81,7 @@ public class GameManager : MonoBehaviour
 					break;
 
 				case Phase.Playing:
-					PlayCard(selectedCard, 0);
+					trickManager.PlayCard(selectedCard, 0);
 					break;
 			}
 		}

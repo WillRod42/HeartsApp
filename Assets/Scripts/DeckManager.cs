@@ -46,7 +46,6 @@ public class DeckManager : MonoBehaviour
 
 		cardWidth = cardImages[0].bounds.size.x;
 		cardHeight = cardImages[0].bounds.size.y;
-
   }
 
 	public void LogHands()
@@ -92,6 +91,11 @@ public class DeckManager : MonoBehaviour
 	public List<GameObject> GetHand(int index)
 	{
 		return hands[index];
+	}
+
+	public List<GameObject> GetExtraCards()
+	{
+		return extraCards;
 	}
 
 	public void DealHands()
