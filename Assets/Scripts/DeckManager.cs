@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
 	public int numPlayers;
+	public bool debug;
 
 	private GameObject[] cards;
 	private Sprite[] cardImages;
@@ -50,19 +51,42 @@ public class DeckManager : MonoBehaviour
 
 	public void LogHands()
 	{
-		Debug.Log("-----------------HANDS-----------------");
-
-		foreach(List<GameObject> hand in hands)
+		if (debug)
 		{
-			string handStr = "";
-			foreach (GameObject card in hand)
-			{
-				handStr += " " + GetCardValue(card) + " ";
-			}
-			Debug.Log("[" + handStr + "]");
-		}
+			Debug.Log("-----------------HANDS-----------------");
 
-		Debug.Log("---------------------------------------");
+			foreach(List<GameObject> hand in hands)
+			{
+				string handStr = "";
+				foreach (GameObject card in hand)
+				{
+					handStr += " " + GetCardValue(card) + " ";
+				}
+				Debug.Log("[" + handStr + "]");
+			}
+
+			Debug.Log("---------------------------------------");
+		}
+	}
+
+	public void LogPasses(List<GameObject[]> passedCards)
+	{
+		if (debug)
+		{
+			Debug.Log("-----------------PASSES-----------------");
+
+			foreach (GameObject[] cards in passedCards)
+			{
+				string passed = "";
+				foreach (GameObject card in cards)
+				{
+					passed += " " + GetCardValue(card) + " ";
+				}
+				Debug.Log("[" + passed + "]");
+			}
+
+			Debug.Log("----------------------------------------");
+		}
 	}
 
 	public List<GameObject> getHand(int index)
@@ -165,6 +189,8 @@ public class DeckManager : MonoBehaviour
 			passedCards.Add(opponent.GetPassingCards());
 		}
 
+		LogPasses(passedCards);
+
 		switch (PhaseManager.GetCurrRound() % NUMBER_PASSING_PHASES)
 		{
 			case 1: // Pass left
@@ -183,10 +209,15 @@ public class DeckManager : MonoBehaviour
 				PassCards(passedCards[0], 0, numPlayers - 1);
 				break;
 
-			case 3: // Pass diagonally
+			case 3: // Pass diagonally (pass left but skip one player)
 				if (numPlayers > 3)
 				{
-					
+					for (int i = 0; i < numPlayers - 2; i++)
+					{
+						PassCards(passedCards[i], i, i + 2);
+					}
+					PassCards(passedCards[numPlayers - 2], numPlayers - 1, 0);
+					PassCards(passedCards[numPlayers - 1], numPlayers - 1, 1);
 				}
 				break;
 		}
