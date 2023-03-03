@@ -48,6 +48,23 @@ public class DeckManager : MonoBehaviour
 
   }
 
+	public void LogHands()
+	{
+		Debug.Log("-----------------HANDS-----------------");
+
+		foreach(List<GameObject> hand in hands)
+		{
+			string handStr = "";
+			foreach (GameObject card in hand)
+			{
+				handStr += " " + GetCardValue(card) + " ";
+			}
+			Debug.Log("[" + handStr + "]");
+		}
+
+		Debug.Log("---------------------------------------");
+	}
+
 	public List<GameObject> getHand(int index)
 	{
 		return hands[index];
@@ -201,13 +218,13 @@ public class DeckManager : MonoBehaviour
 		int cardValue = imageIndex % CARDS_PER_SUIT;
 
 		// Keeps face card values as letters
-		if (cardValue > 10)
+		if (cardValue >= 10)
 		{
 			switch (cardValue - 10)
 			{
-				case 1: value += "J"; break;
-				case 2: value += "Q"; break;
-				case 3: value += "K"; break;
+				case 0: value += "J"; break;
+				case 1: value += "Q"; break;
+				case 2: value += "K"; break;
 			}
 		}
 		else if (cardValue == 0)
@@ -216,7 +233,7 @@ public class DeckManager : MonoBehaviour
 		}
 		else
 		{
-			value += cardValue;
+			value += (cardValue + 1);
 		}
 		
 		switch (imageIndex / CARDS_PER_SUIT)

@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
 	public const int NUMBER_OF_PASSED_CARDS = 3;
 
-	public Button passBtn;
-
 	private DeckManager deck;
 	private List<GameObject> selectedCards;
 
@@ -22,9 +20,11 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onDealingPhase += deck.Shuffle;
 		PhaseManager.onDealingPhase += deck.DealHands;
 		PhaseManager.onDealingPhase += deck.PlaceCards;
+		PhaseManager.onDealingPhase += deck.LogHands;
 
 		PhaseManager.onPassingPhase += deck.PassCards;
 		PhaseManager.onPassingPhase += deck.PlaceCards;
+		PhaseManager.onPassingPhase += deck.LogHands;
   }
 
 	public List<GameObject> GetSelectedCards()
