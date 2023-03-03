@@ -252,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80d80a5d0c9e384ba52fd2e5523ecd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseManager: {fileID: 2117972381}
   btnTxt: {fileID: 502993815}
 --- !u!114 &240771306
 MonoBehaviour:
@@ -589,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692729163}
   - component: {fileID: 692729162}
+  - component: {fileID: 692729165}
   - component: {fileID: 692729164}
   m_Layer: 0
   m_Name: GameManager
@@ -609,7 +609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310b0005270cf9c4ba26bb6f6e6dc6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numPlayers: 4
 --- !u!4 &692729163
 Transform:
   m_ObjectHideFlags: 0
@@ -655,6 +654,19 @@ MonoBehaviour:
   m_DefaultActionMap: Main
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &692729165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692729161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f101b9a9868ec0642bd0ef1555972e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numPlayers: 4
 --- !u!1 &707155050
 GameObject:
   m_ObjectHideFlags: 0

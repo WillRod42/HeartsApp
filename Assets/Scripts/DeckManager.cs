@@ -130,6 +130,8 @@ public class DeckManager : MonoBehaviour
 		int imageIndex = int.Parse(imageName.Split('_')[^1]);
 
 		int cardValue = imageIndex % CARDS_PER_SUIT;
+		
+		// Keeps face card values as letters
 		if (cardValue > 10)
 		{
 			switch (cardValue - 10)
@@ -185,6 +187,7 @@ public class DeckManager : MonoBehaviour
 		return intVals;
 	}
 
+	// Sorts by suit first then value
 	private void SortHand(List<GameObject> hand)
 	{
 		hand.Sort(delegate(GameObject card1, GameObject card2)
