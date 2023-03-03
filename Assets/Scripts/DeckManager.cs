@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeckManager : MonoBehaviour
 {
+	[Range(3, 6)]
 	public int numPlayers;
 	public bool debug;
 
@@ -11,8 +12,7 @@ public class DeckManager : MonoBehaviour
 	private Sprite[] cardImages;
 	private List<GameObject>[] hands; // First hand is player's hand, rest of hands go clockwise around the 'table'
 	private List<GameObject> extraCards;
-
-	private SimpleOpponentTest[] opponents; //test
+	private SimpleOpponentTest[] opponents;
 
 	private float cardWidth;
 	private float cardHeight;
@@ -23,7 +23,7 @@ public class DeckManager : MonoBehaviour
 
   private void Start()
   {
-		opponents = new SimpleOpponentTest[3];
+		opponents = new SimpleOpponentTest[numPlayers - 1];
 		for (int i = 0; i < opponents.Length; i++)
 		{
 			opponents[i] = new SimpleOpponentTest();
@@ -89,7 +89,7 @@ public class DeckManager : MonoBehaviour
 		}
 	}
 
-	public List<GameObject> getHand(int index)
+	public List<GameObject> GetHand(int index)
 	{
 		return hands[index];
 	}
@@ -238,7 +238,20 @@ public class DeckManager : MonoBehaviour
 		SortHand(hands[recipientIndex]);
 	}
 
-	private string GetCardValue(GameObject card)
+	public bool HandHasSuit(List<GameObject> hand, string suit)
+	{
+		foreach (GameObject card in hand)
+		{
+			if (GetCardValue(card)[^1].ToString() == suit.ToUpper())
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public string GetCardValue(GameObject card)
 	{
 		string value = "";
 		string[] suits = {"S", "H", "D", "C"};
@@ -315,5 +328,4 @@ public class DeckManager : MonoBehaviour
 			return (card1Vals[1] * CARDS_PER_SUIT + card1Vals[0]) - (card2Vals[1] * CARDS_PER_SUIT + card2Vals[0]);
 		});
 	}
-
 }
