@@ -1,0 +1,1314 @@
+fileFormatVersion: 2
+guid: 9cdd463030b14a0478c8d6ed34ddd4c6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ca7e7e4e556dcb49be57b6405e73e11
+      internalID: 691001230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_1
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e395458f5886654da1eed74ad7346bb
+      internalID: -1657697397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_2
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1642b98ae8b7b74a9de24b16cee861a
+      internalID: 777350991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_3
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b193a795f5aa51c4ebd2bf74bbdc4ca6
+      internalID: 1346954909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_4
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd3882aa5722dd4fb05cf51fb72b549
+      internalID: 190957662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_5
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d15162fa3861814a9176fb1d8d4b817
+      internalID: 1055799292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_6
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162f8f29e6cd927438803fc27170b7fc
+      internalID: 1678141635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_7
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c962550da308b745b3b9ffab4cbf5c1
+      internalID: 970042942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_8
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882a10db56a40e74cbe68bd588031ab9
+      internalID: -166044135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_9
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0da2410b209bb446bc5b6f390d1fbe0
+      internalID: 128965582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_10
+      rect:
+        serializedVersion: 2
+        x: 3157
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da782c56ab5d3a49a26b173c50e6a6a
+      internalID: -1325225032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_11
+      rect:
+        serializedVersion: 2
+        x: 3471
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cb37ec6fcbbd24fb40f45f10326972
+      internalID: -2038810234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_12
+      rect:
+        serializedVersion: 2
+        x: 3784
+        y: 1398
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568efd0508cbfae40959143642533f77
+      internalID: -1067254211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_13
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01a144138cd1e244a9a9c1e1fd7deab6
+      internalID: -2094609691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_14
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3747f28318fe69741b25a2886505b3d9
+      internalID: 1874441845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_15
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a01e5f6c6dc03140954fc0907d66ed6
+      internalID: 1852576911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_16
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a716df01a9709d0428dd401a66a2ff58
+      internalID: -1307249180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_17
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6335e1f12d5916941a5581eaf7d9f774
+      internalID: 406447302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_18
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf053d63f8eadda4cb84350939731e78
+      internalID: -2075316340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_19
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aa5429dd5b31a347b565542eed06f04
+      internalID: -2084084044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_20
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b09eb6bd1ee0624b81e0c68aed7ad69
+      internalID: -988221125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_21
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57bb60091d3044d4b9d62ed13ed974fe
+      internalID: -846239204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_22
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811a0b0542f2b0f4697928f6391e4d6e
+      internalID: -313910495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_23
+      rect:
+        serializedVersion: 2
+        x: 3157
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6435af960936fb24eafa34afb707bfee
+      internalID: 1456274291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_24
+      rect:
+        serializedVersion: 2
+        x: 3471
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c561c3d7bb7854d9c6272513f61ef1
+      internalID: -2135763320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_25
+      rect:
+        serializedVersion: 2
+        x: 3784
+        y: 940
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1320934a348b804bba1d89387bc426c
+      internalID: -380974029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_26
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf2ad10eef24959448a09506d2ebda0f
+      internalID: -52112488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_27
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4481ec844fed9b34198a85b12288b43a
+      internalID: 98500479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_28
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43daed629de3f9a46afefe2d638b08d2
+      internalID: -1683438651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_29
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d607cb997d9e636498336a72e3e2722a
+      internalID: -2012271043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_30
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27469172626d59e4bbb582dbb4f61319
+      internalID: 758146384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_31
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3e7ee366f06454dbe6ddf2e58ddcf9
+      internalID: 869698491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_32
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215ef16ef3af11b45b4b9eb8bf57c280
+      internalID: 1704011887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_33
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac740336d8dad348be014dee84929af
+      internalID: 300981883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_34
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a46876f4e4af543a1b13c2857a631a
+      internalID: -240146999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_35
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf536044d6f9ab4190180a8259f3f43
+      internalID: 772402509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_36
+      rect:
+        serializedVersion: 2
+        x: 3157
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e80f16ed913a4489bf45dd570f6064
+      internalID: 548221513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_37
+      rect:
+        serializedVersion: 2
+        x: 3471
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e5ff9c187e5ef40895eb4dde382d3d
+      internalID: -1546852661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_38
+      rect:
+        serializedVersion: 2
+        x: 3784
+        y: 483
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99221f05ce080fb43affca2d39449fbb
+      internalID: 251315373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_39
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec1fc9bd47613824994a90dc53da9a7c
+      internalID: 511849746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_40
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd4beeeb645957a47b2cf119ef05fd2c
+      internalID: 1136482960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_41
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422604a0fb2049045aaea5d28e795995
+      internalID: -1202239702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_42
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05afdad6a092a2642a72dfe3b1ae1b6b
+      internalID: 2089394731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_43
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c809dfb4753e91748a568fb0c3abc7d9
+      internalID: 923346695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_44
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c0fd3efe169ad4b845db9ec33823d0
+      internalID: 1621719297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_45
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dba826586da80141b2f28d95bc73411
+      internalID: 1255600218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_46
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2efd87c66a4511a47911b943ee8c1568
+      internalID: -1823304687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_47
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7f3a2d99862aa47b09b1f3785d091e
+      internalID: 178709042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_48
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b9637a8346f9a1488481f2fda0c8928
+      internalID: -953870729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_49
+      rect:
+        serializedVersion: 2
+        x: 3157
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e0c03f7034e2a47a7feab46b2f0d98
+      internalID: 1199799946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_50
+      rect:
+        serializedVersion: 2
+        x: 3471
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ebdbed3d5f69140a116e8d6a6412ef
+      internalID: -675900408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: English_pattern_playing_cards_deck_51
+      rect:
+        serializedVersion: 2
+        x: 3784
+        y: 25
+        width: 287
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc107fd16131c74bb4cf00846b6f6b3
+      internalID: 1782140285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      English_pattern_playing_cards_deck_4: 190957662
+      English_pattern_playing_cards_deck_36: 548221513
+      English_pattern_playing_cards_deck_0: 691001230
+      English_pattern_playing_cards_deck_24: -2135763320
+      English_pattern_playing_cards_deck_30: 758146384
+      English_pattern_playing_cards_deck_12: -1067254211
+      English_pattern_playing_cards_deck_38: 251315373
+      English_pattern_playing_cards_deck_19: -2084084044
+      English_pattern_playing_cards_deck_26: -52112488
+      English_pattern_playing_cards_deck_42: 2089394731
+      English_pattern_playing_cards_deck_47: 178709042
+      English_pattern_playing_cards_deck_41: -1202239702
+      English_pattern_playing_cards_deck_27: 98500479
+      English_pattern_playing_cards_deck_11: -2038810234
+      English_pattern_playing_cards_deck_7: 970042942
+      English_pattern_playing_cards_deck_10: -1325225032
+      English_pattern_playing_cards_deck_50: -675900408
+      English_pattern_playing_cards_deck_51: 1782140285
+      English_pattern_playing_cards_deck_17: 406447302
+      English_pattern_playing_cards_deck_1: -1657697397
+      English_pattern_playing_cards_deck_20: -988221125
+      English_pattern_playing_cards_deck_23: 1456274291
+      English_pattern_playing_cards_deck_2: 777350991
+      English_pattern_playing_cards_deck_8: -166044135
+      English_pattern_playing_cards_deck_22: -313910495
+      English_pattern_playing_cards_deck_45: 1255600218
+      English_pattern_playing_cards_deck_28: -1683438651
+      English_pattern_playing_cards_deck_6: 1678141635
+      English_pattern_playing_cards_deck_3: 1346954909
+      English_pattern_playing_cards_deck_33: 300981883
+      English_pattern_playing_cards_deck_40: 1136482960
+      English_pattern_playing_cards_deck_49: 1199799946
+      English_pattern_playing_cards_deck_15: 1852576911
+      English_pattern_playing_cards_deck_18: -2075316340
+      English_pattern_playing_cards_deck_46: -1823304687
+      English_pattern_playing_cards_deck_37: -1546852661
+      English_pattern_playing_cards_deck_25: -380974029
+      English_pattern_playing_cards_deck_16: -1307249180
+      English_pattern_playing_cards_deck_34: -240146999
+      English_pattern_playing_cards_deck_43: 923346695
+      English_pattern_playing_cards_deck_44: 1621719297
+      English_pattern_playing_cards_deck_48: -953870729
+      English_pattern_playing_cards_deck_29: -2012271043
+      English_pattern_playing_cards_deck_31: 869698491
+      English_pattern_playing_cards_deck_5: 1055799292
+      English_pattern_playing_cards_deck_9: 128965582
+      English_pattern_playing_cards_deck_13: -2094609691
+      English_pattern_playing_cards_deck_32: 1704011887
+      English_pattern_playing_cards_deck_35: 772402509
+      English_pattern_playing_cards_deck_14: 1874441845
+      English_pattern_playing_cards_deck_21: -846239204
+      English_pattern_playing_cards_deck_39: 511849746
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
