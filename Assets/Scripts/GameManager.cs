@@ -34,8 +34,12 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onPassingPhase += deck.PlaceCards;
 		PhaseManager.onPassingPhase += ClearSelectedCards;
 		PhaseManager.onPassingPhase += trickManager.setFirstPlayer;
-		PhaseManager.onPassingPhase += trickManager.StartRound;
 		PhaseManager.onPassingPhase += deck.LogHands;
+		PhaseManager.onPassingPhase += trickManager.StartRound;
+
+		// PhaseManager.onPlayingPhase += 
+		
+		PhaseManager.onScoringPhase += LogScores;
   }
 
 	public List<GameObject> GetSelectedCards()
@@ -50,6 +54,16 @@ public class GameManager : MonoBehaviour
 		{
 			addExtraCardsToTrick = true;
 		}
+	}
+
+	public void LogScores()
+	{
+		string scoreStr = "\n";
+		foreach (int score in scores)
+		{
+			scoreStr += score + "\n";
+		}
+		Utility.Log("SCORE BOARD", scoreStr);
 	}
 
 	private void ClearSelectedCards()

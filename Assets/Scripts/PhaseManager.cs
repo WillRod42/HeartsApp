@@ -52,7 +52,7 @@ public class PhaseManager : MonoBehaviour
 			case Phase.Dealing: onDealingPhase(); break;
 			case Phase.Passing: onPassingPhase(); break;
 			case Phase.Playing: /* onPlayingPhase(); */ break;
-			case Phase.Scoring: /* onScoringPhase(); */ currRound++; break;
+			case Phase.Scoring: onScoringPhase(); currRound++; break;
 		}
 
 		UpdatePhase();

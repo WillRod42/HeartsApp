@@ -175,6 +175,7 @@ public class DeckManager : MonoBehaviour
 				GameObject card = playerHand[i];
 				card.transform.position = new Vector3(bottomLeftCamera.x + (cardOffset * i) + (cardWidth / 2f), bottomLeftCamera.y + cardHeight / 2, 0);
 				card.SetActive(true);
+				card.GetComponent<SpriteRenderer>().sortingOrder = i;
 			}
 		// }
 	}
