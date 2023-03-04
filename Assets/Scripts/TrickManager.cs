@@ -10,12 +10,14 @@ public class TrickManager : MonoBehaviour
 
 	private DeckManager deck;
 	private List<GameObject> trick;
+	private UIManager ui;
 	private int currPlayerTurn;
 
   void Start()
   {
     deck = GetComponent<DeckManager>();
 		trick = new List<GameObject>();
+		ui = GetComponent<UIManager>();
 		currPlayerTurn = 0;
   }
 
@@ -34,11 +36,17 @@ public class TrickManager : MonoBehaviour
 			{
 				if (card.name == "2C")
 				{
-					currPlayerTurn = i;
+					SetCurrPlayer(i);
 					return;
 				}
 			}
 		}
+	}
+
+	public void SetCurrPlayer(int playerIndex)
+	{
+		currPlayerTurn = playerIndex;
+		ui.setActivePlayerTxt(currPlayerTurn);
 	}
 
 	public bool CheckIfLegalPlay(GameObject playedCard, GameObject leadCard, List<GameObject> playerHand)
@@ -78,6 +86,8 @@ public class TrickManager : MonoBehaviour
 		{
 			if (currPlayerTurn != 0)
 			{
+				yield return new WaitForSeconds(2f);
+
 				SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
 				opponent.PlayCard(PlayCard);
 
@@ -109,13 +119,15 @@ public class TrickManager : MonoBehaviour
 			}
 			GameManager.addExtraCardsToTrick = false;
 		}
+
+		yield return new WaitForSeconds(2f);
 		
 		foreach(GameObject card in trick)
 		{
 			card.SetActive(false);
 		}
 		trick.Clear();
-		currPlayerTurn = winningPlayerIndex;
+		SetCurrPlayer(winningPlayerIndex);
 		
 		StopCoroutine("PlayRound");
 		if (deck.GetHand(0).Count > 0)
@@ -155,7 +167,7 @@ public class TrickManager : MonoBehaviour
 
 			playedCard.SetActive(true);
 
-			deck.PlaceCards(trick, trickArea.transform.position, trickArea.GetComponent<SpriteRenderer>().bounds.size);
+			deck.PlaceCards(trick, deck.numPlayers, trickArea.transform.position, trickArea.GetComponent<SpriteRenderer>().bounds.size);
 
 			advancePlayerTurnQueue();
 			return true;
@@ -185,11 +197,11 @@ public class TrickManager : MonoBehaviour
 	{
 		if (currPlayerTurn >= deck.numPlayers - 1)
 		{
-			currPlayerTurn = 0;
+			SetCurrPlayer(0);
 		}
 		else
 		{
-			currPlayerTurn++;
+			SetCurrPlayer(currPlayerTurn + 1);
 		}
 	}
 }

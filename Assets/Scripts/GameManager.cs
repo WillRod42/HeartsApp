@@ -69,7 +69,10 @@ public class GameManager : MonoBehaviour
 
 	private void PlacePlayerCards()
 	{
-		deck.PlaceCards(deck.GetHand(0), playerCardArea.transform.position, playerCardArea.GetComponent<SpriteRenderer>().bounds.size);
+		// List<GameObject> hand = deck.GetHand(0);
+		// deck.PlaceCards(hand, hand.Count, playerCardArea.transform.position, playerCardArea.GetComponent<SpriteRenderer>().bounds.size);
+
+		deck.PlaceCards(deck.GetHand(0), DeckManager.DECK_LENGTH / deck.numPlayers, playerCardArea.transform.position, playerCardArea.GetComponent<SpriteRenderer>().bounds.size);
 	}
 
 	private void ClearSelectedCards()
@@ -109,8 +112,7 @@ public class GameManager : MonoBehaviour
 						if(trickManager.PlayCard(selectedCard, 0))
 						{
 							Utility.Log("USER", selectedCard.name);
-							selectedCard.SetActive(false);
-							PlacePlayerCards();
+							// PlacePlayerCards();
 						}
 					}
 					break;

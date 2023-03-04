@@ -147,55 +147,30 @@ public class DeckManager : MonoBehaviour
 		}
 	}
 
-	public void PlaceCards(List<GameObject> cards, Vector3 placeAreaCenter, Vector3 placeAreaSize)
+	public void PlaceCards(List<GameObject> cards, int cardCount, Vector3 placeAreaCenter, Vector3 placeAreaSize)
 	{
 		Vector3 BottomLeft = new Vector3(placeAreaCenter.x - (placeAreaSize.x / 2), placeAreaCenter.y - (placeAreaSize.y / 2), 0);
 		Vector3 BottomRight = new Vector3(placeAreaCenter.x + (placeAreaSize.x / 2), placeAreaCenter.y - (placeAreaSize.y / 2), 0);
 
-		float cardOffset = ((BottomRight.x - cardWidth) - (BottomLeft.x)) / (cards.Count - 1);
+		// if (cards.Count == 1)
+		// {
+		// 	GameObject card = cards[0];
+		// 	card.transform.position = new Vector3(placeAreaCenter.x, BottomLeft.y + cardHeight / 2, 0);
+		// 	card.SetActive(true);
+		// }
+		// else
+		// {
+			float cardOffset = ((BottomRight.x - cardWidth) - (BottomLeft.x)) / (cardCount - 1);
 
-		for (int i = 0; i < cards.Count; i++)
-		{
-			GameObject card = cards[i];
-			card.transform.position = new Vector3(BottomLeft.x + (cardOffset * i) + (cardWidth / 2f), BottomLeft.y + cardHeight / 2, 0);
-			card.SetActive(true);
-			card.GetComponent<SpriteRenderer>().sortingOrder = i;
-		}
-
+			for (int i = 0; i < cards.Count; i++)
+			{
+				GameObject card = cards[i];
+				card.transform.position = new Vector3(BottomLeft.x + (cardOffset * i) + (cardWidth / 2f), BottomLeft.y + cardHeight / 2, 0);
+				card.SetActive(true);
+				card.GetComponent<SpriteRenderer>().sortingOrder = i;
+			}
+		// }
 	}
-
-	// public void PlaceCards()
-	// {
-	// 	List<GameObject> playerHand = hands[0];
-
-	// 	Vector3 bottomLeftScreen = new Vector3(0, 0, 0);
-	// 	Vector3 bottomLeftCamera = Camera.main.ScreenToWorldPoint(bottomLeftScreen);
-
-	// 	Vector3 bottomRightScreen = new Vector3(Screen.width, 0, 0);
-	// 	Vector3 bottomRightCamera = Camera.main.ScreenToWorldPoint(bottomRightScreen);
-
-
-	// 	//Calculate offset
-	// 	float cardOffset = ((bottomRightCamera.x - cardWidth) - (bottomLeftCamera.x)) / (playerHand.Count - 1);
-
-	// 	// if (cardOffset > cardWidth)
-	// 	// {
-	// 	// 	// Fan cards centered on bottom of screen
-	// 	// 	cardOffset = cardWidth;
-			
-	// 	// }
-	// 	// else
-	// 	// {
-	// 		// Fan cards from left
-	// 		for (int i = 0; i < playerHand.Count; i++)
-	// 		{
-	// 			GameObject card = playerHand[i];
-	// 			card.transform.position = new Vector3(bottomLeftCamera.x + (cardOffset * i) + (cardWidth / 2f), bottomLeftCamera.y + cardHeight / 2, 0);
-	// 			card.SetActive(true);
-	// 			card.GetComponent<SpriteRenderer>().sortingOrder = i;
-	// 		}
-	// 	// }
-	// }
 
 	public void Shuffle()
 	{
