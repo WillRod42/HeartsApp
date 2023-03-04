@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 	private DeckManager deck;
 	private TrickManager trickManager;
 	private List<GameObject> selectedCards;
-	
 
   private void Start()
   {
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onPassingPhase += deck.PassCards;
 		PhaseManager.onPassingPhase += deck.PlaceCards;
 		PhaseManager.onPassingPhase += ClearSelectedCards;
+		PhaseManager.onPassingPhase += trickManager.setFirstPlayer;
+		PhaseManager.onPassingPhase += trickManager.StartRound;
 		PhaseManager.onPassingPhase += deck.LogHands;
   }
 
@@ -42,10 +43,13 @@ public class GameManager : MonoBehaviour
 		return selectedCards;
 	}
 
-	public static void BreakHearts()
+	public static void BreakHearts(bool hasExtraCards)
 	{
 		isHeartsBroken = true;
-		addExtraCardsToTrick = true;
+		if (hasExtraCards)
+		{
+			addExtraCardsToTrick = true;
+		}
 	}
 
 	private void ClearSelectedCards()
@@ -77,11 +81,18 @@ public class GameManager : MonoBehaviour
 						selectedCard.transform.position = new Vector3(currPos.x, currPos.y + 1, 0);
 						selectedCards.Add(selectedCard);
 					}
-
 					break;
 
 				case Phase.Playing:
-					trickManager.PlayCard(selectedCard, 0);
+					if (trickManager.getCurrPlayerTurn() == 0)
+					{
+						if(trickManager.PlayCard(selectedCard, 0))
+						{
+							Utility.Log("USER", selectedCard.name);
+							selectedCard.SetActive(false);
+							deck.PlaceCards();
+						}
+					}
 					break;
 			}
 		}

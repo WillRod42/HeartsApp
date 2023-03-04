@@ -7,6 +7,7 @@ public class DeckManager : MonoBehaviour
 	[Range(3, 6)]
 	public int numPlayers;
 	public bool debug;
+	public bool hasExtraCards;
 
 	private GameObject[] cards;
 	private Sprite[] cardImages;
@@ -26,7 +27,7 @@ public class DeckManager : MonoBehaviour
 		opponents = new SimpleOpponentTest[numPlayers - 1];
 		for (int i = 0; i < opponents.Length; i++)
 		{
-			opponents[i] = new SimpleOpponentTest();
+			opponents[i] = new SimpleOpponentTest(i + 1);
 		}
 
 		// Initialize Deck and load card images
@@ -40,6 +41,7 @@ public class DeckManager : MonoBehaviour
 			newCard.AddComponent<BoxCollider2D>();
 			newCard.SetActive(false);
 			newCard.transform.SetParent(transform);
+			newCard.name = GetCardValue(newCard);
 
 			cards[i] = newCard;
 		}
@@ -52,19 +54,19 @@ public class DeckManager : MonoBehaviour
 	{
 		if (debug)
 		{
-			Debug.Log("-----------------HANDS-----------------");
-
+			string allHands = "\n";
 			foreach(List<GameObject> hand in hands)
 			{
 				string handStr = "";
 				foreach (GameObject card in hand)
 				{
-					handStr += " " + GetCardValue(card) + " ";
+					handStr += " " + card.name + " ";
 				}
-				Debug.Log("[" + handStr + "]");
+				handStr = "[" + handStr + "]";
+				allHands += handStr + "\n";
 			}
 
-			Debug.Log("---------------------------------------");
+			Utility.Log("HANDS", allHands);
 		}
 	}
 
@@ -72,19 +74,19 @@ public class DeckManager : MonoBehaviour
 	{
 		if (debug)
 		{
-			Debug.Log("-----------------PASSES-----------------");
-
+			string allPasses = "\n";
 			foreach (GameObject[] cards in passedCards)
 			{
 				string passed = "";
 				foreach (GameObject card in cards)
 				{
-					passed += " " + GetCardValue(card) + " ";
+					passed += " " + card.name + " ";
 				}
-				Debug.Log("[" + passed + "]");
+				passed = "[" + passed + "]";
+				allPasses += passed + "\n";
 			}
 
-			Debug.Log("----------------------------------------");
+			Utility.Log("PASSED", allPasses);
 		}
 	}
 
@@ -131,12 +133,17 @@ public class DeckManager : MonoBehaviour
 		// Set aside extra cards if there are leftovers after dealing
 		if (DECK_LENGTH % numPlayers != 0)
 		{
+			hasExtraCards = true;
 			extraCards = new List<GameObject>();
 			int numExtraCards = DECK_LENGTH % numPlayers;
 			for (int i = DECK_LENGTH - numExtraCards; i < DECK_LENGTH; i++)
 			{
 				extraCards.Add(cards[i]);
 			}
+		}
+		else
+		{
+			hasExtraCards = false;
 		}
 	}
 
@@ -246,13 +253,21 @@ public class DeckManager : MonoBehaviour
 	{
 		foreach (GameObject card in hand)
 		{
-			if (GetCardValue(card)[^1].ToString() == suit.ToUpper())
+			if (card.name[^1].ToString() == suit.ToUpper())
 			{
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	public int CompareCards(GameObject card1, GameObject card2)
+	{
+		int[] card1Vals = CardValToInts(card1.name);
+		int[] card2Vals = CardValToInts(card2.name);
+
+		return (card1Vals[1] * CARDS_PER_SUIT + card1Vals[0]) - (card2Vals[1] * CARDS_PER_SUIT + card2Vals[0]);
 	}
 
 	public string GetCardValue(GameObject card)
@@ -324,12 +339,12 @@ public class DeckManager : MonoBehaviour
 	// Sorts by suit first then value
 	private void SortHand(List<GameObject> hand)
 	{
-		hand.Sort(delegate(GameObject card1, GameObject card2)
-		{
-			int[] card1Vals = CardValToInts(GetCardValue(card1));
-			int[] card2Vals = CardValToInts(GetCardValue(card2));
+		hand.Sort(CompareCards);
+	}
 
-			return (card1Vals[1] * CARDS_PER_SUIT + card1Vals[0]) - (card2Vals[1] * CARDS_PER_SUIT + card2Vals[0]);
-		});
+	// Use player index (i.e. 0 would be the player and not an opponent)
+	public SimpleOpponentTest getOpponent(int playerIndex)
+	{
+		return opponents[playerIndex - 1];
 	}
 }
