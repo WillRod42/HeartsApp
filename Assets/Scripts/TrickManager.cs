@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrickManager : MonoBehaviour
 {
+	public GameObject trickArea;
+
 	private const int SCORE_QUEEN_OF_SPADES = 13;
 
 	private DeckManager deck;
@@ -107,7 +109,11 @@ public class TrickManager : MonoBehaviour
 			}
 			GameManager.addExtraCardsToTrick = false;
 		}
-
+		
+		foreach(GameObject card in trick)
+		{
+			card.SetActive(false);
+		}
 		trick.Clear();
 		currPlayerTurn = winningPlayerIndex;
 		
@@ -146,6 +152,11 @@ public class TrickManager : MonoBehaviour
 		{
 			trick.Add(playedCard);
 			hand.Remove(playedCard);
+
+			playedCard.SetActive(true);
+
+			deck.PlaceCards(trick, trickArea.transform.position, trickArea.GetComponent<SpriteRenderer>().bounds.size);
+
 			advancePlayerTurnQueue();
 			return true;
 		}

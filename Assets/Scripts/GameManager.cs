@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 	public static int[] scores;
 	public static bool isHeartsBroken;
 	public static bool addExtraCardsToTrick;
+	public GameObject playerCardArea;
 
 	private DeckManager deck;
 	private TrickManager trickManager;
@@ -27,11 +28,11 @@ public class GameManager : MonoBehaviour
 		// Subscribe methods to phase events
 		PhaseManager.onDealingPhase += deck.Shuffle;
 		PhaseManager.onDealingPhase += deck.DealHands;
-		PhaseManager.onDealingPhase += deck.PlaceCards;
+		PhaseManager.onDealingPhase += PlacePlayerCards;
 		PhaseManager.onDealingPhase += deck.LogHands;
 
 		PhaseManager.onPassingPhase += deck.PassCards;
-		PhaseManager.onPassingPhase += deck.PlaceCards;
+		PhaseManager.onPassingPhase += PlacePlayerCards;
 		PhaseManager.onPassingPhase += ClearSelectedCards;
 		PhaseManager.onPassingPhase += trickManager.setFirstPlayer;
 		PhaseManager.onPassingPhase += deck.LogHands;
@@ -64,6 +65,11 @@ public class GameManager : MonoBehaviour
 			scoreStr += score + "\n";
 		}
 		Utility.Log("SCORE BOARD", scoreStr);
+	}
+
+	private void PlacePlayerCards()
+	{
+		deck.PlaceCards(deck.GetHand(0), playerCardArea.transform.position, playerCardArea.GetComponent<SpriteRenderer>().bounds.size);
 	}
 
 	private void ClearSelectedCards()
@@ -104,7 +110,7 @@ public class GameManager : MonoBehaviour
 						{
 							Utility.Log("USER", selectedCard.name);
 							selectedCard.SetActive(false);
-							deck.PlaceCards();
+							PlacePlayerCards();
 						}
 					}
 					break;
