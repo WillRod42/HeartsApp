@@ -44,7 +44,14 @@ public class TrickManager : MonoBehaviour
 		string playedSuit = "" + playedCard.name[^1];
 		if (leadCard == null)
 		{
-			return GameManager.isHeartsBroken || playedSuit != "H";
+			if (playerHand.Count == DeckManager.DECK_LENGTH / deck.numPlayers)
+			{
+				return playedCard.name == "2C";
+			}
+			else
+			{
+				return GameManager.isHeartsBroken || playedSuit != "H";
+			}
 		}
 
 		string leadSuit = "" + leadCard.name[^1];

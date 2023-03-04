@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DeckManager : MonoBehaviour
 {
+	public const int DECK_LENGTH = 52;
+	public const int CARDS_PER_SUIT = 13;
+	public const int NUMBER_PASSING_PHASES = 4;
+
 	[Range(3, 6)]
 	public int numPlayers;
 	public bool debug;
@@ -17,10 +21,6 @@ public class DeckManager : MonoBehaviour
 
 	private float cardWidth;
 	private float cardHeight;
-
-	private const int DECK_LENGTH = 52;
-	private const int CARDS_PER_SUIT = 13;
-	private const int NUMBER_PASSING_PHASES = 4;
 
   private void Start()
   {
