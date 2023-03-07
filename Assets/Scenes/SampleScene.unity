@@ -653,7 +653,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Touch
   m_DefaultActionMap: Main
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1027,7 +1027,7 @@ Transform:
   m_GameObject: {fileID: 931735353}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.28, z: 0}
-  m_LocalScale: {x: 14.99875, y: 1, z: 1}
+  m_LocalScale: {x: 11.436546, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1125,7 +1125,7 @@ Transform:
   m_GameObject: {fileID: 1141185556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 8, y: 1, z: 1}
+  m_LocalScale: {x: 7.2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

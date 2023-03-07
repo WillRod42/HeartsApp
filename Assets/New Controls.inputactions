@@ -30,7 +30,7 @@
                 {
                     "name": "",
                     "id": "46e882c1-1681-43c4-9ebe-f687e2d02f6b",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",

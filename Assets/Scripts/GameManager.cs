@@ -83,9 +83,20 @@ public class GameManager : MonoBehaviour
 	// Decides what tapping/left clicking non-ui elements does depending on the phase
 	private void OnTouch()
 	{
-		Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-		Vector2 rayOrigin = new Vector2(mousePos.x, mousePos.y);
-		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero);
+		Vector2 TouchPosition;
+		Vector2 mousePos;
+		PlayerInput input = GetComponent<PlayerInput>();
+		if (input.currentControlScheme == "Touch")
+		{
+			mousePos = Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue());
+		}
+		else
+		{
+			mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+		}
+
+		TouchPosition = new Vector2(mousePos.x, mousePos.y);
+		RaycastHit2D hit = Physics2D.Raycast(TouchPosition, Vector2.zero);
 		if (hit.transform)
 		{
 			GameObject selectedCard = hit.collider.gameObject;
@@ -111,7 +122,7 @@ public class GameManager : MonoBehaviour
 					{
 						if(trickManager.PlayCard(selectedCard, 0))
 						{
-							Utility.Log("USER", selectedCard.name);
+							Debug.Log("User: " + selectedCard.name);
 							// PlacePlayerCards();
 						}
 					}

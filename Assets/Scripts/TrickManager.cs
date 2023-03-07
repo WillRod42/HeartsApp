@@ -12,6 +12,7 @@ public class TrickManager : MonoBehaviour
 	private List<GameObject> trick;
 	private UIManager ui;
 	private int currPlayerTurn;
+	private int round;
 
   void Start()
   {
@@ -19,10 +20,12 @@ public class TrickManager : MonoBehaviour
 		trick = new List<GameObject>();
 		ui = GetComponent<UIManager>();
 		currPlayerTurn = 0;
+		round = 0;
   }
 
 	public void StartRound()
 	{
+		round++;
 		StopCoroutine("PlayRound");
 		StartCoroutine("PlayRound", PlayRound());
 	}
@@ -58,9 +61,13 @@ public class TrickManager : MonoBehaviour
 			{
 				return playedCard.name == "2C";
 			}
-			else
+			else if (deck.HandHasSuit(playerHand, "S") || deck.HandHasSuit(playerHand, "C") || deck.HandHasSuit(playerHand, "D"))
 			{
 				return GameManager.isHeartsBroken || playedSuit != "H";
+			}
+			else
+			{
+				return true;
 			}
 		}
 
@@ -82,6 +89,9 @@ public class TrickManager : MonoBehaviour
 	{
 		int playerTurn = currPlayerTurn;
 		int winningPlayerIndex = currPlayerTurn;
+		string winningCard = "";
+
+		Utility.Log("ROUND " + round, "");
 		for (int i = 0; i < deck.numPlayers; i++)
 		{
 			if (currPlayerTurn != 0)
@@ -91,7 +101,7 @@ public class TrickManager : MonoBehaviour
 				SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
 				opponent.PlayCard(PlayCard);
 
-				Utility.Log("Player " + playerTurn, trick[^1].name);
+				Debug.Log("Player " + playerTurn + ": " + trick[^1].name);
 			}
 
 			yield return new WaitUntil(() => playerTurn != currPlayerTurn);
@@ -99,12 +109,14 @@ public class TrickManager : MonoBehaviour
 			if (checkIfNewCardWinning())
 			{
 				winningPlayerIndex = playerTurn;
+				winningCard = trick[^1].name;
 			}
 
 			playerTurn = currPlayerTurn;
 		}
 
 		Utility.Log("ROUND OVER", "Winner: Player " + winningPlayerIndex);
+		Debug.Log("Winning Card: " + winningCard);
 
 		foreach (GameObject card in trick)
 		{
@@ -126,9 +138,10 @@ public class TrickManager : MonoBehaviour
 		{
 			card.SetActive(false);
 		}
-		trick.Clear();
-		SetCurrPlayer(winningPlayerIndex);
 		
+		SetCurrPlayer(winningPlayerIndex);
+		trick.Clear();
+
 		StopCoroutine("PlayRound");
 		if (deck.GetHand(0).Count > 0)
 		{
@@ -148,7 +161,7 @@ public class TrickManager : MonoBehaviour
 		GameObject latestCard = trick[^1];
 		for (int i = trick.Count - 2; i >= 0; i--)
 		{
-			if (deck.CompareCards(latestCard, trick[i]) <= 0)
+			if ((trick[0]).name[^1] == (trick[i]).name[^1] && deck.CompareCards(latestCard, trick[i]) <= 0)
 			{
 				newCardWinning = false;
 			}
