@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 	private DeckManager deck;
 	private TrickManager trickManager;
 	private List<GameObject> selectedCards;
+	private bool playedCard;
 
   private void Start()
   {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
 		selectedCards = new List<GameObject>();
 		scores = new int[deck.numPlayers];
 		isHeartsBroken = false;
+		playedCard = false;
 
 		// Subscribe methods to phase events
 		PhaseManager.onDealingPhase += deck.Shuffle;
@@ -65,6 +67,11 @@ public class GameManager : MonoBehaviour
 			scoreStr += score + "\n";
 		}
 		Utility.Log("SCORE BOARD", scoreStr);
+	}
+
+	public int[] GetScores()
+	{
+		return scores;
 	}
 
 	private void PlacePlayerCards()
@@ -118,13 +125,14 @@ public class GameManager : MonoBehaviour
 					break;
 
 				case Phase.Playing:
-					if (trickManager.getCurrPlayerTurn() == 0)
+					if (trickManager.getCurrPlayerTurn() == 0 && !playedCard)
 					{
+						playedCard = true;
 						if(trickManager.PlayCard(selectedCard, 0))
 						{
 							Debug.Log("User: " + selectedCard.name);
-							// PlacePlayerCards();
 						}
+						playedCard = false;
 					}
 					break;
 			}

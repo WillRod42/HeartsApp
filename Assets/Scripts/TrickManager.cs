@@ -9,7 +9,9 @@ public class TrickManager : MonoBehaviour
 	private const int SCORE_QUEEN_OF_SPADES = 13;
 
 	private DeckManager deck;
+	private GameManager gameManager;
 	private List<GameObject> trick;
+	private List<GameObject>[] cardPiles;
 	private UIManager ui;
 	private int currPlayerTurn;
 	private int round;
@@ -17,15 +19,23 @@ public class TrickManager : MonoBehaviour
   void Start()
   {
     deck = GetComponent<DeckManager>();
+		gameManager = GetComponent<GameManager>();
 		trick = new List<GameObject>();
 		ui = GetComponent<UIManager>();
 		currPlayerTurn = 0;
 		round = 0;
+
+		cardPiles = new List<GameObject>[deck.numPlayers];
+		for (int i = 0; i < deck.numPlayers; i++)
+		{
+			cardPiles[i] = new List<GameObject>();
+		}
   }
 
 	public void StartRound()
 	{
 		round++;
+		ui.HidePlayerLabels();
 		StopCoroutine("PlayRound");
 		StartCoroutine("PlayRound", PlayRound());
 	}
@@ -101,7 +111,7 @@ public class TrickManager : MonoBehaviour
 				SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
 				opponent.PlayCard(PlayCard);
 
-				Debug.Log("Player " + playerTurn + ": " + trick[^1].name);
+				Debug.Log("Player " + (playerTurn + 1) + ": " + trick[^1].name);
 			}
 
 			yield return new WaitUntil(() => playerTurn != currPlayerTurn);
@@ -115,20 +125,14 @@ public class TrickManager : MonoBehaviour
 			playerTurn = currPlayerTurn;
 		}
 
-		Utility.Log("ROUND OVER", "Winner: Player " + winningPlayerIndex);
+		Utility.Log("ROUND OVER", "Winner: Player " + (winningPlayerIndex + 1));
 		Debug.Log("Winning Card: " + winningCard);
 
-		foreach (GameObject card in trick)
-		{
-			GameManager.scores[winningPlayerIndex] += ScoreCard(card.name);
-		}
+		cardPiles[winningPlayerIndex].AddRange(trick);
 
 		if (GameManager.addExtraCardsToTrick)
 		{
-			foreach (GameObject card in deck.GetExtraCards())
-			{
-				GameManager.scores[winningPlayerIndex] += ScoreCard(card.name);
-			}
+			cardPiles[winningPlayerIndex].AddRange(deck.GetExtraCards());
 			GameManager.addExtraCardsToTrick = false;
 		}
 
@@ -147,6 +151,23 @@ public class TrickManager : MonoBehaviour
 		{
 			StartRound();
 		}
+		else
+		{
+			ScoreHand();
+		}
+	}
+
+	private void ScoreHand()
+	{
+		for (int i = 0; i < cardPiles.Length; i++)
+		{
+			foreach (GameObject card in cardPiles[i])
+			{
+				GameManager.scores[i] += ScoreCard(card.name);
+			}
+		}
+
+		ui.UpdateScores(gameManager.GetScores());
 	}
 
 	private bool checkIfNewCardWinning()
@@ -182,6 +203,7 @@ public class TrickManager : MonoBehaviour
 
 			deck.PlaceCards(trick, deck.numPlayers, trickArea.transform.position, trickArea.GetComponent<SpriteRenderer>().bounds.size);
 
+			ui.UpdatePlayerLabel(playedCard.transform.position, playerIndex);
 			advancePlayerTurnQueue();
 			return true;
 		}
