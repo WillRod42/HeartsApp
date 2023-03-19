@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class TrickManager : MonoBehaviour
 {
+	[Range(0.1f, 5f)]
+	public float aiDelay;
+
+	[Range(0.1f, 5f)]
+	public float roundDelay;
+
 	public GameObject trickArea;
 
 	private const int SCORE_QUEEN_OF_SPADES = 13;
@@ -31,6 +37,11 @@ public class TrickManager : MonoBehaviour
 			cardPiles[i] = new List<GameObject>();
 		}
   }
+
+	public int GetTrickSize()
+	{
+		return trick.Count;
+	}
 
 	public void StartRound()
 	{
@@ -106,7 +117,7 @@ public class TrickManager : MonoBehaviour
 		{
 			if (currPlayerTurn != 0)
 			{
-				yield return new WaitForSeconds(2f);
+				yield return new WaitForSeconds(aiDelay);
 
 				SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
 				opponent.PlayCard(PlayCard);
@@ -136,7 +147,7 @@ public class TrickManager : MonoBehaviour
 			GameManager.addExtraCardsToTrick = false;
 		}
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(roundDelay);
 		
 		foreach(GameObject card in trick)
 		{
@@ -168,6 +179,7 @@ public class TrickManager : MonoBehaviour
 		}
 
 		ui.UpdateScores(gameManager.GetScores());
+		PhaseManager.RunPhase();
 	}
 
 	private bool checkIfNewCardWinning()

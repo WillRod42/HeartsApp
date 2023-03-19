@@ -7,12 +7,13 @@ public class UIManager : MonoBehaviour
 {
 	[Range(0, 500)]
 	public int playerLabelVertOffset;
-	public Canvas canvas;
-	public GameObject playerLabelPrefab;
 
+	public Canvas uiCanvas;
+	public GameObject playerLabelPrefab;
 	public TMP_Text activePlayerTxt;
 	public GameObject scoreboard;
 	public GameObject scores;
+	public GameObject PassBtn;
 	
 	private DeckManager deck;
 	private List<GameObject> playerScoresUI;
@@ -34,6 +35,9 @@ public class UIManager : MonoBehaviour
 		}
 
 		InitUI(deck.numPlayers);
+
+		PhaseManager.onScoringPhase += ResetUI;
+		// PhaseManager.onScoringPhase += PhaseManager.RunPhase;
 	}
 
 	public void setActivePlayerTxt(int currTurn)
@@ -71,6 +75,13 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
+	private void ResetUI()
+	{
+		PassBtn.SetActive(true);
+		HidePlayerLabels();
+		PhaseManager.RunPhase();
+	}
+
 	private void InitUI(int numPlayers)
 	{
 		for (int i = playerScoresUI.Count - 1; i >= numPlayers; i--)
@@ -81,10 +92,10 @@ public class UIManager : MonoBehaviour
 		for (int i = 0; i < numPlayers; i++)
 		{
 			GameObject playerLabel = Instantiate(playerLabelPrefab);
-			playerLabel.name = "Player " + (i + 1);
+			playerLabel.name = i == 0 ? "You" : "Player " + (i + 1);
 			playerLabel.GetComponent<TMP_Text>().text = playerLabel.name;
 			playerLabel.GetComponent<TMP_Text>().fontSize = 36;
-			playerLabel.transform.SetParent(canvas.transform);
+			playerLabel.transform.SetParent(uiCanvas.transform);
 			playerLabel.SetActive(false);
 			
 			playerPlayLabels.Add(playerLabel);

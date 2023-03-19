@@ -21,9 +21,11 @@ public class PhaseManager : MonoBehaviour
   {
     currPhase = Phase.Dealing;
 		currRound = 1;
+
+		RunPhase();
   }
 
-	private void UpdatePhase()
+	private static void UpdatePhase()
 	{
 		if (currPhase == Phase.Scoring)
 		{
@@ -33,6 +35,8 @@ public class PhaseManager : MonoBehaviour
 		{
 			currPhase++;
 		}
+
+		Debug.Log("Update Phase: " + currPhase);
 	}
 
 	public static Phase GetCurrPhase()
@@ -45,17 +49,19 @@ public class PhaseManager : MonoBehaviour
 		return currRound;
 	}
 
-	public void RunPhase()
+	public static void RunPhase()
 	{
-		switch (currPhase)
+		Debug.Log("Running Phase " + currPhase);
+
+		Phase phase = currPhase;
+		UpdatePhase();
+		switch (phase)
 		{
 			case Phase.Dealing: onDealingPhase(); break;
 			case Phase.Passing: onPassingPhase(); break;
-			case Phase.Playing: /* onPlayingPhase(); */ break;
+			case Phase.Playing: onPlayingPhase(); break;
 			case Phase.Scoring: onScoringPhase(); currRound++; break;
 		}
-
-		UpdatePhase();
 	}
 }
 

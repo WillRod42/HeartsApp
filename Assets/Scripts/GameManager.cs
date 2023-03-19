@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
 	private DeckManager deck;
 	private TrickManager trickManager;
+	private UIManager ui;
 	private List<GameObject> selectedCards;
 	private bool playedCard;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 		addExtraCardsToTrick = false;
 		deck = GetComponent<DeckManager>();
 		trickManager = GetComponent<TrickManager>();
+		ui = GetComponent<UIManager>();
 		selectedCards = new List<GameObject>();
 		scores = new int[deck.numPlayers];
 		isHeartsBroken = false;
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onPassingPhase += deck.LogHands;
 		PhaseManager.onPassingPhase += trickManager.StartRound;
 
-		// PhaseManager.onPlayingPhase += 
+		PhaseManager.onPlayingPhase += PhaseManager.RunPhase;
 		
 		PhaseManager.onScoringPhase += LogScores;
   }
@@ -57,6 +59,12 @@ public class GameManager : MonoBehaviour
 		{
 			addExtraCardsToTrick = true;
 		}
+	}
+
+	public void PassCards()
+	{
+		PhaseManager.RunPhase();
+		ui.PassBtn.SetActive(false);
 	}
 
 	public void LogScores()
@@ -125,7 +133,7 @@ public class GameManager : MonoBehaviour
 					break;
 
 				case Phase.Playing:
-					if (trickManager.getCurrPlayerTurn() == 0 && !playedCard)
+					if (trickManager.getCurrPlayerTurn() == 0 && !playedCard && trickManager.GetTrickSize() < 4)
 					{
 						playedCard = true;
 						if(trickManager.PlayCard(selectedCard, 0))
