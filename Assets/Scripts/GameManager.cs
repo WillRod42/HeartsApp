@@ -111,7 +111,33 @@ public class GameManager : MonoBehaviour
 		}
 
 		TouchPosition = new Vector2(mousePos.x, mousePos.y);
-		RaycastHit2D hit = Physics2D.Raycast(TouchPosition, Vector2.zero);
+		// RaycastHit2D hit = Physics2D.Raycast(TouchPosition, Vector2.zero);
+
+		RaycastHit2D hit = new RaycastHit2D();
+		RaycastHit2D[] hits = Physics2D.RaycastAll(TouchPosition, Vector2.zero);
+		for (int i = 0; i < hits.Length; i++)
+		{
+			RaycastHit2D temp = hits[i];
+			if (temp.transform)
+			{
+				if (!hit.transform)
+				{
+					hit = hits[i];
+				}
+				else
+				{
+					SpriteRenderer sprite = temp.collider.gameObject.GetComponent<SpriteRenderer>();
+					if (sprite)
+					{
+						if (sprite.sortingOrder > hit.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder)
+						{
+							hit = temp;
+						}
+					}
+				}
+			}
+		}
+
 		if (hit.transform)
 		{
 			GameObject selectedCard = hit.collider.gameObject;

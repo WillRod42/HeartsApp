@@ -1222,8 +1222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5029fdc27efdd3b43baf5678ce10ab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiDelay: 2.01
-  roundDelay: 0.52
+  aiDelay: 2
+  roundDelay: 2
   trickArea: {fileID: 1141185556}
 --- !u!114 &692729167
 MonoBehaviour:
