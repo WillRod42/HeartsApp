@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RFCT10VN2BR",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 1370,
+        "processId": 4575,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,12 @@
             "deviceId": "RFCT10VN2BR",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 1370,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCT10VN2BR",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 4575,
             "exited": false
         }
     ],

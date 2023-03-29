@@ -141,34 +141,37 @@ public class GameManager : MonoBehaviour
 		if (hit.transform)
 		{
 			GameObject selectedCard = hit.collider.gameObject;
-			switch (PhaseManager.GetCurrPhase())
+			if (deck.GetHand(0).Contains(selectedCard))
 			{
-				case Phase.Passing:
-					if (selectedCards.Contains(selectedCard))
-					{
-						Vector3 currPos = selectedCard.transform.position;
-						selectedCard.transform.position = new Vector3(currPos.x, currPos.y - 1, 0);
-						selectedCards.Remove(selectedCard);
-					}
-					else if (selectedCards.Count < NUMBER_OF_PASSED_CARDS)
-					{
-						Vector3 currPos = selectedCard.transform.position;
-						selectedCard.transform.position = new Vector3(currPos.x, currPos.y + 1, 0);
-						selectedCards.Add(selectedCard);
-					}
-					break;
-
-				case Phase.Playing:
-					if (trickManager.getCurrPlayerTurn() == 0 && !playedCard && trickManager.GetTrickSize() < 4)
-					{
-						playedCard = true;
-						if(trickManager.PlayCard(selectedCard, 0))
+				switch (PhaseManager.GetCurrPhase())
+				{
+					case Phase.Passing:
+						if (selectedCards.Contains(selectedCard))
 						{
-							Debug.Log("User: " + selectedCard.name);
+							Vector3 currPos = selectedCard.transform.position;
+							selectedCard.transform.position = new Vector3(currPos.x, currPos.y - 1, 0);
+							selectedCards.Remove(selectedCard);
 						}
-						playedCard = false;
-					}
-					break;
+						else if (selectedCards.Count < NUMBER_OF_PASSED_CARDS)
+						{
+							Vector3 currPos = selectedCard.transform.position;
+							selectedCard.transform.position = new Vector3(currPos.x, currPos.y + 1, 0);
+							selectedCards.Add(selectedCard);
+						}
+						break;
+
+					case Phase.Playing:
+						if (trickManager.getCurrPlayerTurn() == 0 && !playedCard && trickManager.GetTrickSize() < 4)
+						{
+							playedCard = true;
+							if(trickManager.PlayCard(selectedCard, 0))
+							{
+								Debug.Log("User: " + selectedCard.name);
+							}
+							playedCard = false;
+						}
+						break;
+				}
 			}
 		}
 	}
