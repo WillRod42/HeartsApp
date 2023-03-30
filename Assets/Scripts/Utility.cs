@@ -9,7 +9,14 @@ public static class Utility
 		logHeader = "-----------------" + logHeader + "-----------------";
 		Debug.Log(logHeader);
 		Debug.Log(message);
-		// PrintLogFooter(logHeader.Length);
+	}
+
+	public static void LogArray<T>(T[] array)
+	{
+		foreach (T element in array)
+		{
+			Debug.Log(element);
+		}
 	}
 
 	public static void PlaceObjectsInSpread(List<Transform> objs, int size, float width, float height, Vector3 placeAreaCenter, Vector3 placeAreaSize, Vector3 offset)
@@ -31,7 +38,6 @@ public static class Utility
 			}
 		}
 	}
-
 
 	private static void PrintLogFooter(int length)
 	{

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class GameManager : MonoBehaviour
 	public static int[] scores;
 	public static bool isHeartsBroken;
 	public static bool addExtraCardsToTrick;
+	public static bool gameOver;
+
+	public bool debugSetScore;
+	public int setUserScore;
+	public int gameEndScore;
 	public GameObject playerCardArea;
 
 	private DeckManager deck;
@@ -28,6 +34,9 @@ public class GameManager : MonoBehaviour
 		scores = new int[deck.numPlayers];
 		isHeartsBroken = false;
 		playedCard = false;
+		gameOver = false;
+
+		scores[0] = debugSetScore ? setUserScore : 0;
 
 		// Subscribe methods to phase events
 		PhaseManager.onDealingPhase += deck.Shuffle;
@@ -45,6 +54,7 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onPlayingPhase += PhaseManager.RunPhase;
 		
 		PhaseManager.onScoringPhase += LogScores;
+		PhaseManager.onScoringPhase += CheckIfGameEnd;
   }
 
 	public List<GameObject> GetSelectedCards()
@@ -82,11 +92,30 @@ public class GameManager : MonoBehaviour
 		return scores;
 	}
 
+	public void ResetGame()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	private void CheckIfGameEnd()
+	{
+		Debug.Log("Checking Scores:");
+		foreach (int score in scores)
+		{
+			Debug.Log(score);
+			if (score >= gameEndScore)
+			{
+				ui.ToggleUIElement(ui.gameOverCanvas);
+				ui.ToggleUIElement(ui.uiCanvas);
+				ui.ToggleUIElement(ui.scoreboard);
+				gameOver = true;
+				break;
+			}
+		}
+	}
+
 	private void PlacePlayerCards()
 	{
-		// List<GameObject> hand = deck.GetHand(0);
-		// deck.PlaceCards(hand, hand.Count, playerCardArea.transform.position, playerCardArea.GetComponent<SpriteRenderer>().bounds.size);
-
 		deck.PlaceCards(deck.GetHand(0), DeckManager.DECK_LENGTH / deck.numPlayers, playerCardArea.transform.position, playerCardArea.GetComponent<SpriteRenderer>().bounds.size);
 	}
 
@@ -111,7 +140,6 @@ public class GameManager : MonoBehaviour
 		}
 
 		TouchPosition = new Vector2(mousePos.x, mousePos.y);
-		// RaycastHit2D hit = Physics2D.Raycast(TouchPosition, Vector2.zero);
 
 		RaycastHit2D hit = new RaycastHit2D();
 		RaycastHit2D[] hits = Physics2D.RaycastAll(TouchPosition, Vector2.zero);

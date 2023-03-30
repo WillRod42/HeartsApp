@@ -30,7 +30,7 @@ public class DeckManager : MonoBehaviour
 			opponents[i] = new SimpleOpponentTest(i + 1);
 		}
 
-		// Initialize Deck and load card images
+		// Initialize cards and card images
 		cards = new GameObject[DECK_LENGTH];
     cardImages = Resources.LoadAll<Sprite>("English_pattern_playing_cards_deck");//
 		for (int i = 0; i < DECK_LENGTH; i++)
@@ -48,7 +48,10 @@ public class DeckManager : MonoBehaviour
 
 		cardWidth = cardImages[0].bounds.size.x;
 		cardHeight = cardImages[0].bounds.size.y;
+
+		PhaseManager.RunPhase();
   }
+
 
 	public void LogHands()
 	{
@@ -158,33 +161,9 @@ public class DeckManager : MonoBehaviour
 		Utility.PlaceObjectsInSpread(transforms, cardCount, cardWidth, cardHeight, placeAreaCenter, placeAreaSize, Vector3.zero);
 	}
 
-	// public void PlaceCards(List<GameObject> cards, int cardCount, Vector3 placeAreaCenter, Vector3 placeAreaSize)
-	// {
-	// 	Vector3 BottomLeft = new Vector3(placeAreaCenter.x - (placeAreaSize.x / 2), placeAreaCenter.y - (placeAreaSize.y / 2), 0);
-	// 	Vector3 BottomRight = new Vector3(placeAreaCenter.x + (placeAreaSize.x / 2), placeAreaCenter.y - (placeAreaSize.y / 2), 0);
-
-	// 	// if (cards.Count == 1)
-	// 	// {
-	// 	// 	GameObject card = cards[0];
-	// 	// 	card.transform.position = new Vector3(placeAreaCenter.x, BottomLeft.y + cardHeight / 2, 0);
-	// 	// 	card.SetActive(true);
-	// 	// }
-	// 	// else
-	// 	// {
-	// 		float cardOffset = ((BottomRight.x - cardWidth) - (BottomLeft.x)) / (cardCount - 1);
-
-	// 		for (int i = 0; i < cards.Count; i++)
-	// 		{
-	// 			GameObject card = cards[i];
-	// 			card.transform.position = new Vector3(BottomLeft.x + (cardOffset * i) + (cardWidth / 2f), BottomLeft.y + cardHeight / 2, 0);
-	// 			card.SetActive(true);
-	// 			card.GetComponent<SpriteRenderer>().sortingOrder = i;
-	// 		}
-	// 	// }
-	// }
-
 	public void Shuffle()
 	{
+		Debug.Log("Shuffling Start");
 		for (int i = 0; i < cards.Length; i++)
 		{
 			int j = Random.Range(0, i + 1);
@@ -350,5 +329,13 @@ public class DeckManager : MonoBehaviour
 	public SimpleOpponentTest getOpponent(int playerIndex)
 	{
 		return opponents[playerIndex - 1];
+	}
+
+	public void ClearCards()
+	{
+		foreach (GameObject card in cards)
+		{
+			card.SetActive(false);
+		}
 	}
 }

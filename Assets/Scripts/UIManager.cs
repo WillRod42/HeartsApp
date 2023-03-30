@@ -8,12 +8,13 @@ public class UIManager : MonoBehaviour
 	[Range(0, 500)]
 	public int playerLabelVertOffset;
 
-	public Canvas uiCanvas;
+	public GameObject uiCanvas;
 	public GameObject playerLabelPrefab;
 	public TMP_Text activePlayerTxt;
 	public GameObject scoreboard;
 	public GameObject scores;
 	public GameObject PassBtn;
+	public GameObject gameOverCanvas;
 	
 	private DeckManager deck;
 	private List<GameObject> playerScoresUI;
@@ -37,7 +38,6 @@ public class UIManager : MonoBehaviour
 		InitUI(deck.numPlayers);
 
 		PhaseManager.onScoringPhase += ResetUI;
-		// PhaseManager.onScoringPhase += PhaseManager.RunPhase;
 	}
 
 	public void setActivePlayerTxt(int currTurn)
@@ -45,10 +45,15 @@ public class UIManager : MonoBehaviour
 		activePlayerTxt.text = "Active Player: " + (currTurn + 1);
 	}
 
-	public void ToggleScoreBoard()
+	public void ToggleUIElement(GameObject uiElement)
 	{
-		scoreboard.SetActive(!scoreboard.activeSelf);
+		uiElement.SetActive(!uiElement.activeSelf);
 	}
+
+	// public void ToggleScoreBoard()
+	// {
+	// 	scoreboard.SetActive(!scoreboard.activeSelf);
+	// }
 
 	public void UpdateScores(int[] newScores)
 	{

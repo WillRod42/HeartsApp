@@ -118,11 +118,13 @@ public class TrickManager : MonoBehaviour
 			if (currPlayerTurn != 0)
 			{
 				yield return new WaitForSeconds(aiDelay);
+				if (trick.Count < deck.numPlayers)
+				{
+					SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
+					opponent.PlayCard(PlayCard);
 
-				SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
-				opponent.PlayCard(PlayCard);
-
-				Debug.Log("Player " + (playerTurn + 1) + ": " + trick[^1].name);
+					Debug.Log("Player " + (playerTurn + 1) + ": " + trick[^1].name);
+				}
 			}
 
 			yield return new WaitUntil(() => playerTurn != currPlayerTurn);

@@ -17,12 +17,15 @@ public class PhaseManager : MonoBehaviour
 	private static Phase currPhase;
 	private static int currRound;
 
-  private void Start()
+  private void Awake()
   {
+		onDealingPhase = null;
+		onPassingPhase = null;
+		onPlayingPhase = null;
+		onScoringPhase = null;
+
     currPhase = Phase.Dealing;
 		currRound = 1;
-
-		RunPhase();
   }
 
 	private static void UpdatePhase()
@@ -51,16 +54,17 @@ public class PhaseManager : MonoBehaviour
 
 	public static void RunPhase()
 	{
-		Debug.Log("Running Phase " + currPhase);
-
-		Phase phase = currPhase;
-		UpdatePhase();
-		switch (phase)
+		if (!GameManager.gameOver)
 		{
-			case Phase.Dealing: onDealingPhase(); break;
-			case Phase.Passing: onPassingPhase(); break;
-			case Phase.Playing: onPlayingPhase(); break;
-			case Phase.Scoring: onScoringPhase(); currRound++; break;
+			Phase phase = currPhase;
+			UpdatePhase();
+			switch (phase)
+			{
+				case Phase.Dealing: onDealingPhase(); break;
+				case Phase.Passing: onPassingPhase(); break;
+				case Phase.Playing: onPlayingPhase(); break;
+				case Phase.Scoring: onScoringPhase(); currRound++; break;
+			}
 		}
 	}
 }
