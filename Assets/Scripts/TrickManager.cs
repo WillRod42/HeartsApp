@@ -128,7 +128,7 @@ public class TrickManager : MonoBehaviour
 				}
 			}
 
-			yield return new WaitUntil(() => playerTurn != currPlayerTurn);
+			yield return new WaitUntil(() => (trick.Count > i));
 
 			if (checkIfNewCardWinning())
 			{
