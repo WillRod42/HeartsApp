@@ -10,11 +10,12 @@ public class UIManager : MonoBehaviour
 
 	public GameObject uiCanvas;
 	public GameObject playerLabelPrefab;
-	public TMP_Text activePlayerTxt;
 	public GameObject scoreboard;
 	public GameObject scores;
 	public GameObject PassBtn;
 	public GameObject gameOverCanvas;
+	public TMP_Text activePlayerTxt;
+	public TMP_Text winnerTxt;
 	
 	private DeckManager deck;
 	private List<GameObject> playerScoresUI;
@@ -50,10 +51,10 @@ public class UIManager : MonoBehaviour
 		uiElement.SetActive(!uiElement.activeSelf);
 	}
 
-	// public void ToggleScoreBoard()
-	// {
-	// 	scoreboard.SetActive(!scoreboard.activeSelf);
-	// }
+	public void SetWinnerText(int playerIndex)
+	{
+		winnerTxt.text = playerPlayLabels[playerIndex].GetComponent<TMP_Text>().text + " Won!";
+	}
 
 	public void UpdateScores(int[] newScores)
 	{

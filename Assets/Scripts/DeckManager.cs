@@ -18,6 +18,7 @@ public class DeckManager : MonoBehaviour
 	private List<GameObject>[] hands; // First hand is player's hand, rest of hands go clockwise around the 'table'
 	private List<GameObject> extraCards;
 	private SimpleOpponentTest[] opponents;
+	private UIManager ui;
 
 	private float cardWidth;
 	private float cardHeight;
@@ -29,6 +30,8 @@ public class DeckManager : MonoBehaviour
 		{
 			opponents[i] = new SimpleOpponentTest(i + 1);
 		}
+
+		ui = GetComponent<UIManager>();
 
 		// Initialize cards and card images
 		cards = new GameObject[DECK_LENGTH];
@@ -175,46 +178,54 @@ public class DeckManager : MonoBehaviour
 
 	public void PassCards()
 	{
+		// Debug.Log("PASS");
 		List<GameObject[]> passedCards = new List<GameObject[]>();
 		passedCards.Add(GetComponent<GameManager>().GetSelectedCards().ToArray());
 
-		foreach (SimpleOpponentTest opponent in opponents)
+		if (passedCards[0].Length == 3)
 		{
-			passedCards.Add(opponent.GetPassingCards());
-		}
+			foreach (SimpleOpponentTest opponent in opponents)
+			{
+				passedCards.Add(opponent.GetPassingCards());
+			}
 
-		LogPasses(passedCards);
+			LogPasses(passedCards);
 
-		switch (PhaseManager.GetCurrRound() % NUMBER_PASSING_PHASES)
-		{
-			case 1: // Pass left
-				for (int i = 0; i < numPlayers - 1; i++)
-				{
-					PassCards(passedCards[i], i, i + 1);
-				}
-				PassCards(passedCards[numPlayers - 1], numPlayers - 1, 0);
-				break;
-
-			case 2: // Pass right
-				for (int i = numPlayers - 1; i > 0 ; i--)
-				{
-					PassCards(passedCards[i], i, i - 1);
-				}
-				PassCards(passedCards[0], 0, numPlayers - 1);
-				break;
-
-			case 3: // Pass diagonally (pass left but skip one player)
-				if (numPlayers > 3)
-				{
-					for (int i = 0; i < numPlayers - 2; i++)
+			switch (PhaseManager.GetCurrRound() % NUMBER_PASSING_PHASES)
+			{
+				case 1: // Pass left
+					for (int i = 0; i < numPlayers - 1; i++)
 					{
-						PassCards(passedCards[i], i, i + 2);
+						PassCards(passedCards[i], i, i + 1);
 					}
-					PassCards(passedCards[numPlayers - 2], numPlayers - 1, 0);
-					PassCards(passedCards[numPlayers - 1], numPlayers - 1, 1);
-				}
-				break;
+					PassCards(passedCards[numPlayers - 1], numPlayers - 1, 0);
+					break;
+
+				case 2: // Pass right
+					for (int i = numPlayers - 1; i > 0 ; i--)
+					{
+						PassCards(passedCards[i], i, i - 1);
+					}
+					PassCards(passedCards[0], 0, numPlayers - 1);
+					break;
+
+				case 3: // Pass diagonally (pass left but skip one player)
+					if (numPlayers > 3)
+					{
+						for (int i = 0; i < numPlayers - 2; i++)
+						{
+							PassCards(passedCards[i], i, i + 2);
+						}
+						PassCards(passedCards[numPlayers - 2], numPlayers - 1, 0);
+						PassCards(passedCards[numPlayers - 1], numPlayers - 1, 1);
+					}
+					break;
+			}
+
+			PhaseManager.RunPhase();
+			ui.PassBtn.SetActive(false);
 		}
+
 	}
 
 	private void PassCards(GameObject[] cards, int senderIndex, int recipientIndex)

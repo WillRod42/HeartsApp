@@ -534,8 +534,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 692729162}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 692729165}
+        m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: PassCards
         m_Mode: 1
         m_Arguments:
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugSetScore: 0
   setUserScore: 0
-  gameEndScore: 100
+  gameEndScore: 1
   playerCardArea: {fileID: 931735353}
 --- !u!4 &692729163
 Transform:
@@ -1462,8 +1462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5029fdc27efdd3b43baf5678ce10ab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiDelay: 2
-  roundDelay: 2
+  aiDelay: 0.52
+  roundDelay: 0.47
   trickArea: {fileID: 1141185556}
 --- !u!114 &692729167
 MonoBehaviour:
@@ -1480,11 +1480,12 @@ MonoBehaviour:
   playerLabelVertOffset: 270
   uiCanvas: {fileID: 707155050}
   playerLabelPrefab: {fileID: 5085809881570367109, guid: 205fd6b4899ac2149898e8dd5c6d8ef4, type: 3}
-  activePlayerTxt: {fileID: 911721915}
-  scoreboard: {fileID: 1228315280}
+  scoreboard: {fileID: 869394967}
   scores: {fileID: 375055549}
   PassBtn: {fileID: 240771303}
   gameOverCanvas: {fileID: 208445898}
+  activePlayerTxt: {fileID: 911721915}
+  winnerTxt: {fileID: 1187551562}
 --- !u!1 &707155050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,10 +2688,10 @@ RectTransform:
   m_Father: {fileID: 208445902}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.32000002, y: 0.7286968}
-  m_AnchorMax: {x: 0.68100005, y: 0.808}
-  m_AnchoredPosition: {x: 0.103881836, y: 0}
-  m_SizeDelta: {x: 0.7941284, y: 0.4468994}
+  m_AnchorMin: {x: 0.27645293, y: 0.8262624}
+  m_AnchorMax: {x: 0.725, y: 0.9147377}
+  m_AnchoredPosition: {x: 0, y: -0.52222}
+  m_SizeDelta: {x: 0.87849426, y: 1.0442047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187551562
 MonoBehaviour:
@@ -2739,8 +2740,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 128
-  m_fontSizeBase: 128
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2822,10 +2823,10 @@ RectTransform:
   m_Father: {fileID: 869394968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.328, y: 0.3418281}
-  m_AnchorMax: {x: 0.67300004, y: 0.8406065}
-  m_AnchoredPosition: {x: -1.4998779, y: -161.5}
-  m_SizeDelta: {x: 1457, y: 887}
+  m_AnchorMin: {x: 0.32854712, y: 0.25113124}
+  m_AnchorMax: {x: 0.67, y: 0.7496065}
+  m_AnchoredPosition: {x: 1.0001221, y: 0}
+  m_SizeDelta: {x: 1464, y: 888}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1228315282
 CanvasRenderer:
@@ -3140,10 +3141,10 @@ RectTransform:
   m_Father: {fileID: 208445902}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.38900003, y: 0.47200003}
-  m_AnchorMax: {x: 0.60954714, y: 0.528}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 1.3599854, y: 0.48819733}
+  m_AnchorMin: {x: 0.39000002, y: 0.056828056}
+  m_AnchorMax: {x: 0.61, y: 0.11260634}
+  m_AnchoredPosition: {x: 0.103881836, y: -0.00012207031}
+  m_SizeDelta: {x: 0.35998535, y: 0.48815918}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513909828
 MonoBehaviour:
@@ -3995,10 +3996,10 @@ RectTransform:
   m_Father: {fileID: 1228315281}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.32879364, y: 0.342}
-  m_AnchorMax: {x: 0.671, y: 0.8407376}
-  m_AnchoredPosition: {x: 0.2277832, y: 0.03173828}
-  m_SizeDelta: {x: 0.000061035, y: 0.06340003}
+  m_AnchorMin: {x: 0.32945073, y: 0.25156537}
+  m_AnchorMax: {x: 0.6695493, y: 0.7491733}
+  m_AnchoredPosition: {x: 0.22888184, y: -0.11999512}
+  m_SizeDelta: {x: 0.000061035156, y: 1.0634003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1957996834
 MonoBehaviour:

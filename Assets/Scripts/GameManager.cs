@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onDealingPhase += PlacePlayerCards;
 		PhaseManager.onDealingPhase += deck.LogHands;
 
-		PhaseManager.onPassingPhase += deck.PassCards;
+		// PhaseManager.onPassingPhase += deck.PassCards;
 		PhaseManager.onPassingPhase += PlacePlayerCards;
 		PhaseManager.onPassingPhase += ClearSelectedCards;
 		PhaseManager.onPassingPhase += trickManager.setFirstPlayer;
@@ -99,12 +99,20 @@ public class GameManager : MonoBehaviour
 
 	private void CheckIfGameEnd()
 	{
-		Debug.Log("Checking Scores:");
 		foreach (int score in scores)
 		{
-			Debug.Log(score);
 			if (score >= gameEndScore)
 			{
+				int winnerIndex = 0;
+				for (int i = 1; i < scores.Length; i++)
+				{
+					if (scores[i] < scores[winnerIndex])
+					{
+						winnerIndex = i;
+					}
+				}
+				
+				ui.SetWinnerText(winnerIndex);
 				ui.ToggleUIElement(ui.gameOverCanvas);
 				ui.ToggleUIElement(ui.uiCanvas);
 				ui.ToggleUIElement(ui.scoreboard);
