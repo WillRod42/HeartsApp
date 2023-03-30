@@ -93,18 +93,14 @@ public class TrickManager : MonoBehaviour
 		}
 
 		string leadSuit = "" + leadCard.name[^1];
-		if (!deck.HandHasSuit(playerHand, leadSuit))
+		if (deck.HandHasSuit(playerHand, leadSuit))
 		{
-			if (playedSuit == "H")
-			{
-				Debug.Log("Hearts Broken! - " + playedCard.name);
-				GameManager.BreakHearts(deck.hasExtraCards);
-			}
-
+			return playedSuit == leadSuit;
+		}
+		else
+		{
 			return true;
 		}
-
-		return playedSuit == leadSuit;
 	}
 
 	public IEnumerator PlayRound()
@@ -218,6 +214,12 @@ public class TrickManager : MonoBehaviour
 			playedCard.SetActive(true);
 
 			deck.PlaceCards(trick, deck.numPlayers, trickArea.transform.position, trickArea.GetComponent<SpriteRenderer>().bounds.size);
+
+			if (playedCard.name[^1] == 'H')
+			{
+				Debug.Log("Hearts Broken! - " + playedCard.name);
+				GameManager.BreakHearts(deck.hasExtraCards);
+			}
 
 			ui.UpdatePlayerLabel(playedCard.transform.position, playerIndex);
 			advancePlayerTurnQueue();
