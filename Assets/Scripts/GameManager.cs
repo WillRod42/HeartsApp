@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
 		PhaseManager.onDealingPhase += PlacePlayerCards;
 		PhaseManager.onDealingPhase += deck.LogHands;
 
-		// PhaseManager.onPassingPhase += deck.PassCards;
 		PhaseManager.onPassingPhase += PlacePlayerCards;
 		PhaseManager.onPassingPhase += ClearSelectedCards;
 		PhaseManager.onPassingPhase += trickManager.setFirstPlayer;

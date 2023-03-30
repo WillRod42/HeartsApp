@@ -97,6 +97,7 @@ public class TrickManager : MonoBehaviour
 		{
 			if (playedSuit == "H")
 			{
+				Debug.Log("Hearts Broken! - " + playedCard.name);
 				GameManager.BreakHearts(deck.hasExtraCards);
 			}
 

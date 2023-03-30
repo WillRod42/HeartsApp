@@ -13,12 +13,18 @@ public class DeckManager : MonoBehaviour
 	public bool debug;
 	public bool hasExtraCards;
 
+	public GameObject debugArea2;
+	public GameObject debugArea3;
+	public GameObject debugArea4;
+
+	private GameManager gameManager;
 	private GameObject[] cards;
 	private Sprite[] cardImages;
 	private List<GameObject>[] hands; // First hand is player's hand, rest of hands go clockwise around the 'table'
 	private List<GameObject> extraCards;
 	private SimpleOpponentTest[] opponents;
 	private UIManager ui;
+	private GameObject[] debugAreas;
 
 	private float cardWidth;
 	private float cardHeight;
@@ -31,7 +37,17 @@ public class DeckManager : MonoBehaviour
 			opponents[i] = new SimpleOpponentTest(i + 1);
 		}
 
+		gameManager = GetComponent<GameManager>();
 		ui = GetComponent<UIManager>();
+
+		if (debug)
+		{
+			debugAreas = new GameObject[4];
+			debugAreas[0] = gameManager.playerCardArea;
+			debugAreas[1] = debugArea2;
+			debugAreas[2] = debugArea3;
+			debugAreas[3] = debugArea4;
+		}
 
 		// Initialize cards and card images
 		cards = new GameObject[DECK_LENGTH];
@@ -124,9 +140,17 @@ public class DeckManager : MonoBehaviour
 			}
 		}
 
+		int playerIndex = 0;
 		foreach (List<GameObject> hand in hands)
 		{
 			SortHand(hand);
+
+			if (debug)
+			{
+				PlaceCards(hand, hand.Count, debugAreas[playerIndex].transform.position, debugAreas[playerIndex].GetComponent<SpriteRenderer>().bounds.size);
+
+				playerIndex++;
+			}
 		}
 
 		// Assign hands to opponents
@@ -166,7 +190,6 @@ public class DeckManager : MonoBehaviour
 
 	public void Shuffle()
 	{
-		Debug.Log("Shuffling Start");
 		for (int i = 0; i < cards.Length; i++)
 		{
 			int j = Random.Range(0, i + 1);
@@ -178,7 +201,6 @@ public class DeckManager : MonoBehaviour
 
 	public void PassCards()
 	{
-		// Debug.Log("PASS");
 		List<GameObject[]> passedCards = new List<GameObject[]>();
 		passedCards.Add(GetComponent<GameManager>().GetSelectedCards().ToArray());
 
@@ -191,7 +213,14 @@ public class DeckManager : MonoBehaviour
 
 			LogPasses(passedCards);
 
-			switch (PhaseManager.GetCurrRound() % NUMBER_PASSING_PHASES)
+			//Skip diagonal passing for 3 players
+			int passingPhase = PhaseManager.GetCurrRound() % NUMBER_PASSING_PHASES;
+			if (numPlayers == 3 && passingPhase == 3)
+			{
+				passingPhase = 4;
+			}
+
+			switch (passingPhase)
 			{
 				case 1: // Pass left
 					for (int i = 0; i < numPlayers - 1; i++)
@@ -221,6 +250,20 @@ public class DeckManager : MonoBehaviour
 					}
 					break;
 			}
+
+			if (debug)
+			{
+				for (int i = 0; i < hands.Length; i++)
+				{
+					PlaceCards(hands[i], hands[i].Count, debugAreas[i].transform.position, debugAreas[i].GetComponent<SpriteRenderer>().bounds.size);
+				}
+			}
+
+			for (int i = 0; i < numPlayers - 1; i++)
+			{
+				opponents[i].hand = hands[i + 1];
+			}
+
 
 			PhaseManager.RunPhase();
 			ui.PassBtn.SetActive(false);

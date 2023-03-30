@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugSetScore: 0
   setUserScore: 0
-  gameEndScore: 1
+  gameEndScore: 100
   playerCardArea: {fileID: 931735353}
 --- !u!4 &692729163
 Transform:
