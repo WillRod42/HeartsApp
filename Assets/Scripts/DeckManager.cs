@@ -239,15 +239,12 @@ public class DeckManager : MonoBehaviour
 					break;
 
 				case 3: // Pass diagonally (pass left but skip one player)
-					if (numPlayers > 3)
+					for (int i = 0; i < numPlayers - 2; i++)
 					{
-						for (int i = 0; i < numPlayers - 2; i++)
-						{
-							PassCards(passedCards[i], i, i + 2);
-						}
-						PassCards(passedCards[numPlayers - 2], numPlayers - 1, 0);
-						PassCards(passedCards[numPlayers - 1], numPlayers - 1, 1);
+						PassCards(passedCards[i], i, i + 2);
 					}
+					PassCards(passedCards[numPlayers - 2], numPlayers - 2, 0);
+					PassCards(passedCards[numPlayers - 1], numPlayers - 1, 1);
 					break;
 			}
 
