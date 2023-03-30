@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 		
 		PhaseManager.onScoringPhase += LogScores;
 		PhaseManager.onScoringPhase += CheckIfGameEnd;
+		PhaseManager.onScoringPhase += ResetHearts;
   }
 
 	public List<GameObject> GetSelectedCards()
@@ -209,5 +210,10 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	private void ResetHearts()
+	{
+		isHeartsBroken = false;
 	}
 }

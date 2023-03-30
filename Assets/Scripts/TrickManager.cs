@@ -181,6 +181,7 @@ public class TrickManager : MonoBehaviour
 			}
 		}
 
+		round = 0;
 		ui.UpdateScores(gameManager.GetScores());
 		PhaseManager.RunPhase();
 	}
