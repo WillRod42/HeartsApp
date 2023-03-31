@@ -14,8 +14,9 @@ public class UIManager : MonoBehaviour
 	public GameObject scores;
 	public GameObject PassBtn;
 	public GameObject gameOverCanvas;
-	public TMP_Text activePlayerTxt;
-	public TMP_Text winnerTxt;
+	public GameObject activePlayerTxt;
+	public GameObject winnerTxt;
+	public GameObject roundWinnerTxt;
 	
 	private DeckManager deck;
 	private List<GameObject> playerScoresUI;
@@ -41,9 +42,16 @@ public class UIManager : MonoBehaviour
 		PhaseManager.onScoringPhase += ResetUI;
 	}
 
+	public void showRoundWinnerText(int playerIndex)
+	{
+		roundWinnerTxt.GetComponent<TMP_Text>().text = playerPlayLabels[playerIndex].name + " won";
+		IEnumerator roundWinner = UIPopup(roundWinnerTxt, GetComponent<TrickManager>().roundDelay);
+		StartCoroutine(roundWinner);
+	}
+
 	public void setActivePlayerTxt(int currTurn)
 	{
-		activePlayerTxt.text = "Active Player: " + (currTurn + 1);
+		activePlayerTxt.GetComponent<TMP_Text>().text = "Active Player: " + (currTurn + 1);
 	}
 
 	public void ToggleUIElement(GameObject uiElement)
@@ -51,9 +59,16 @@ public class UIManager : MonoBehaviour
 		uiElement.SetActive(!uiElement.activeSelf);
 	}
 
+	public IEnumerator UIPopup(GameObject uiElement, float length)
+	{
+		ToggleUIElement(uiElement);
+		yield return new WaitForSeconds(length);
+		ToggleUIElement(uiElement);
+	}
+
 	public void SetWinnerText(int playerIndex)
 	{
-		winnerTxt.text = playerPlayLabels[playerIndex].GetComponent<TMP_Text>().text + " Won!";
+		winnerTxt.GetComponent<TMP_Text>().text = playerPlayLabels[playerIndex].GetComponent<TMP_Text>().text + " Won!";
 	}
 
 	public void UpdateScores(int[] newScores)

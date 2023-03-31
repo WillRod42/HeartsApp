@@ -156,6 +156,8 @@ public class TrickManager : MonoBehaviour
 		SetCurrPlayer(winningPlayerIndex);
 		trick.Clear();
 
+		ui.showRoundWinnerText(winningPlayerIndex);
+
 		StopCoroutine("PlayRound");
 		if (deck.GetHand(0).Count > 0)
 		{
