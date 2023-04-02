@@ -117,8 +117,8 @@ public class TrickManager : MonoBehaviour
 				yield return new WaitForSeconds(aiDelay);
 				if (trick.Count < deck.numPlayers)
 				{
-					SimpleOpponentTest opponent = deck.getOpponent(currPlayerTurn);
-					opponent.PlayCard(PlayCard);
+					AIOpponent opponent = deck.getOpponent(currPlayerTurn);
+					PlayCard(opponent.PlayCard(CheckIfLegalPlay, trick), currPlayerTurn);
 
 					Debug.Log("Player " + (playerTurn + 1) + ": " + trick[^1].name);
 				}
@@ -196,7 +196,7 @@ public class TrickManager : MonoBehaviour
 		GameObject latestCard = trick[^1];
 		for (int i = trick.Count - 2; i >= 0; i--)
 		{
-			if ((trick[0]).name[^1] == (trick[i]).name[^1] && deck.CompareCards(latestCard, trick[i]) <= 0)
+			if ((trick[0]).name[^1] == (trick[i]).name[^1] && DeckManager.CompareCards(latestCard, trick[i]) <= 0)
 			{
 				newCardWinning = false;
 			}
@@ -217,7 +217,7 @@ public class TrickManager : MonoBehaviour
 
 			deck.PlaceCards(trick, deck.numPlayers, trickArea.transform.position, trickArea.GetComponent<SpriteRenderer>().bounds.size);
 
-			if (playedCard.name[^1] == 'H')
+			if (playedCard.name[^1] == 'H' && !GameManager.isHeartsBroken)
 			{
 				Debug.Log("Hearts Broken! - " + playedCard.name);
 				GameManager.BreakHearts(deck.hasExtraCards);

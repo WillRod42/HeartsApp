@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class DeckManager : MonoBehaviour
 	public int numPlayers;
 	public bool debug;
 	public bool hasExtraCards;
+	public bool useSimpleAI;
 
 	public GameObject debugArea2;
 	public GameObject debugArea3;
@@ -22,7 +24,7 @@ public class DeckManager : MonoBehaviour
 	private Sprite[] cardImages;
 	private List<GameObject>[] hands; // First hand is player's hand, rest of hands go clockwise around the 'table'
 	private List<GameObject> extraCards;
-	private SimpleOpponentTest[] opponents;
+	private AIOpponent[] opponents;
 	private UIManager ui;
 	private GameObject[] debugAreas;
 
@@ -31,10 +33,22 @@ public class DeckManager : MonoBehaviour
 
   private void Start()
   {
-		opponents = new SimpleOpponentTest[numPlayers - 1];
-		for (int i = 0; i < opponents.Length; i++)
+		AIOpponent.numPlayers = numPlayers;
+		if (useSimpleAI)
 		{
-			opponents[i] = new SimpleOpponentTest(i + 1);
+			opponents = new SimpleOpponentTest[numPlayers - 1];
+			for (int i = 0; i < opponents.Length; i++)
+			{
+				opponents[i] = new SimpleOpponentTest(i + 1);
+			}
+		}
+		else
+		{
+			opponents = new NormalAI[numPlayers - 1];
+			for (int i = 0; i < opponents.Length; i++)
+			{
+				opponents[i] = new NormalAI(i + 1);
+			}
 		}
 
 		gameManager = GetComponent<GameManager>();
@@ -70,7 +84,6 @@ public class DeckManager : MonoBehaviour
 
 		PhaseManager.RunPhase();
   }
-
 
 	public void LogHands()
 	{
@@ -192,7 +205,7 @@ public class DeckManager : MonoBehaviour
 	{
 		for (int i = 0; i < cards.Length; i++)
 		{
-			int j = Random.Range(0, i + 1);
+			int j = UnityEngine.Random.Range(0, i + 1);
 			GameObject card = cards[i];
 			cards[i] = cards[j];
 			cards[j] = card;
@@ -206,7 +219,7 @@ public class DeckManager : MonoBehaviour
 
 		if (passedCards[0].Length == 3)
 		{
-			foreach (SimpleOpponentTest opponent in opponents)
+			foreach (AIOpponent opponent in opponents)
 			{
 				passedCards.Add(opponent.GetPassingCards());
 			}
@@ -296,7 +309,55 @@ public class DeckManager : MonoBehaviour
 		return false;
 	}
 
-	public int CompareCards(GameObject card1, GameObject card2)
+	public static GameObject GetLowCard(List<GameObject> cards)
+	{
+		return GetHighOrLowCard(cards, false);
+	}
+
+	public static GameObject GetHighCard(List<GameObject> cards)
+	{
+		return GetHighOrLowCard(cards, true);
+	}
+
+	private static GameObject GetHighOrLowCard(List<GameObject> cards, bool getHighCard)
+	{
+		if (cards.Count == 0)
+		{
+			return null;
+		}
+		else if (cards.Count == 1)
+		{
+			return cards[0];
+		}
+		else
+		{
+			GameObject highOrLowCard = cards[0];
+			foreach (GameObject card in cards.Skip(1))
+			{
+				int cardVal = CardValToInts(card.name)[0];
+				int highOrLowCardVal = CardValToInts(highOrLowCard.name)[0];
+
+				if (getHighCard)
+				{
+					if (cardVal > highOrLowCardVal)
+					{
+						highOrLowCard = card;
+					}
+				}
+				else
+				{
+					if (cardVal < highOrLowCardVal)
+					{
+						highOrLowCard = card;
+					}
+				}
+			}
+
+			return highOrLowCard;
+		}
+	}
+
+	public static int CompareCards(GameObject card1, GameObject card2)
 	{
 		int[] card1Vals = CardValToInts(card1.name);
 		int[] card2Vals = CardValToInts(card2.name);
@@ -344,7 +405,7 @@ public class DeckManager : MonoBehaviour
 		return value;
 	}
 
-	private int[] CardValToInts(string cardVal)
+	private static int[] CardValToInts(string cardVal)
 	{
 		int[] intVals = new int[2]; // 1st is card value, 2nd is suit
 
@@ -377,7 +438,7 @@ public class DeckManager : MonoBehaviour
 	}
 
 	// Use player index (i.e. 0 would be the player and not an opponent)
-	public SimpleOpponentTest getOpponent(int playerIndex)
+	public AIOpponent getOpponent(int playerIndex)
 	{
 		return opponents[playerIndex - 1];
 	}

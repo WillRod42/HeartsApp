@@ -2,29 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleOpponentTest
+public class SimpleOpponentTest : AIOpponent
 {
-	public delegate bool playCardDelegate(GameObject playedCard, int playerIndex);
-	public List<GameObject> hand;
+	public SimpleOpponentTest(int playerIndex) : base(playerIndex) {}
 	
-	private int playerIndex;
-
-	public SimpleOpponentTest(int playerIndex)
-	{
-		this.playerIndex = playerIndex;
-	}
-
-	// Just passes first 3 cards in hand
-	public GameObject[] GetPassingCards()
+	// Passes first 3 cards in hand
+	public override GameObject[] GetPassingCards()
 	{
 		return hand.GetRange(0, 3).ToArray();
 	}
 
-	public GameObject PlayCard(playCardDelegate playCard)
+	// Plays first legal card in hand
+	public override GameObject PlayCard(checkIfLegalDelegate checkIfLegal, List<GameObject> trick)
 	{
 		int cardIndex = 0;
 		GameObject card = hand[cardIndex];
-		while (!playCard(card, playerIndex))
+		GameObject leadCard = trick.Count > 0 ? trick[0] : null;
+		while (!checkIfLegal(card, leadCard, hand))
 		{
 			cardIndex++;
 			card = hand[cardIndex];

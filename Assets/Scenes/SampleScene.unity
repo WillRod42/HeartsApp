@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugSetScore: 0
-  setUserScore: 0
+  setUserScore: 99
   gameEndScore: 100
   playerCardArea: {fileID: 931735353}
 --- !u!4 &692729163
@@ -1585,6 +1585,7 @@ MonoBehaviour:
   numPlayers: 4
   debug: 1
   hasExtraCards: 0
+  useSimpleAI: 1
   debugArea2: {fileID: 1496541587}
   debugArea3: {fileID: 1671175886}
   debugArea4: {fileID: 1068992003}
@@ -1600,8 +1601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5029fdc27efdd3b43baf5678ce10ab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiDelay: 0.52
-  roundDelay: 0.47
+  aiDelay: 3
+  roundDelay: 2
   trickArea: {fileID: 1141185556}
 --- !u!114 &692729167
 MonoBehaviour:
