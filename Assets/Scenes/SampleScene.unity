@@ -1583,9 +1583,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numPlayers: 4
-  debug: 1
+  debug: 0
   hasExtraCards: 0
-  useSimpleAI: 1
+  useSimpleAI: 0
   debugArea2: {fileID: 1496541587}
   debugArea3: {fileID: 1671175886}
   debugArea4: {fileID: 1068992003}
@@ -1601,8 +1601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5029fdc27efdd3b43baf5678ce10ab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiDelay: 3
-  roundDelay: 2
+  aiDelay: 1
+  roundDelay: 3
   trickArea: {fileID: 1141185556}
 --- !u!114 &692729167
 MonoBehaviour:

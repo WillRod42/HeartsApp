@@ -135,6 +135,7 @@ public class TrickManager : MonoBehaviour
 			playerTurn = currPlayerTurn;
 		}
 
+		ui.showRoundWinnerText(winningPlayerIndex);
 		Utility.Log("ROUND OVER", "Winner: Player " + (winningPlayerIndex + 1));
 		Debug.Log("Winning Card: " + winningCard);
 
@@ -155,8 +156,6 @@ public class TrickManager : MonoBehaviour
 		
 		SetCurrPlayer(winningPlayerIndex);
 		trick.Clear();
-
-		ui.showRoundWinnerText(winningPlayerIndex);
 
 		StopCoroutine("PlayRound");
 		if (deck.GetHand(0).Count > 0)
