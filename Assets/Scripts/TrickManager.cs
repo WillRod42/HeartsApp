@@ -173,9 +173,24 @@ public class TrickManager : MonoBehaviour
 	{
 		for (int i = 0; i < cardPiles.Length; i++)
 		{
+			int roundScore = 0;
 			foreach (GameObject card in cardPiles[i])
 			{
-				GameManager.scores[i] += ScoreCard(card.name);
+				roundScore += ScoreCard(card.name);
+			}
+			if (roundScore == 26)
+			{
+				for (int j = 0; j < cardPiles.Length; j++)
+				{
+					if (j != i)
+					{
+						GameManager.scores[j] += 26;
+					}
+				}
+			}
+			else
+			{
+				GameManager.scores[i] += roundScore;
 			}
 		}
 
