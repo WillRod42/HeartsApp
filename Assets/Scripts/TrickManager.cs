@@ -30,12 +30,7 @@ public class TrickManager : MonoBehaviour
 		ui = GetComponent<UIManager>();
 		currPlayerTurn = 0;
 		round = 0;
-
-		cardPiles = new List<GameObject>[deck.numPlayers];
-		for (int i = 0; i < deck.numPlayers; i++)
-		{
-			cardPiles[i] = new List<GameObject>();
-		}
+		InitCardPiles();
   }
 
 	public int GetTrickSize()
@@ -43,9 +38,19 @@ public class TrickManager : MonoBehaviour
 		return trick.Count;
 	}
 
+	public void InitCardPiles()
+	{
+		cardPiles = new List<GameObject>[deck.numPlayers];
+		for (int i = 0; i < deck.numPlayers; i++)
+		{
+			cardPiles[i] = new List<GameObject>();
+		}
+	}
+
 	public void StartRound()
 	{
 		round++;
+		InitCardPiles();
 		ui.HidePlayerLabels();
 		StopCoroutine("PlayRound");
 		StartCoroutine("PlayRound", PlayRound());
