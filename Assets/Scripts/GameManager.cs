@@ -71,12 +71,6 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void PassCards()
-	{
-		PhaseManager.RunPhase();
-		ui.PassBtn.SetActive(false);
-	}
-
 	public void LogScores()
 	{
 		string scoreStr = "\n";

@@ -31,6 +31,8 @@ public class TrickManager : MonoBehaviour
 		currPlayerTurn = 0;
 		round = 0;
 		InitCardPiles();
+
+		PhaseManager.onScoringPhase += InitCardPiles;
   }
 
 	public int GetTrickSize()
@@ -50,7 +52,6 @@ public class TrickManager : MonoBehaviour
 	public void StartRound()
 	{
 		round++;
-		InitCardPiles();
 		ui.HidePlayerLabels();
 		StopCoroutine("PlayRound");
 		StartCoroutine("PlayRound", PlayRound());
