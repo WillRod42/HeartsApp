@@ -16,7 +16,7 @@ public class NormalAI : AIOpponent
 	public override GameObject PlayCard(checkIfLegalDelegate checkIfLegal, List<GameObject> trick)
 	{
 		List<GameObject> validCards = GetValidCards(checkIfLegal, trick);
-		Utility.LogArray<GameObject>(validCards.ToArray());
+		// Utility.LogArray<GameObject>(validCards.ToArray());
 		if (trick.Count == 0)
 		{
 			Debug.Log("Leading");

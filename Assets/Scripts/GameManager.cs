@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 	private List<GameObject> selectedCards;
 	private bool playedCard;
 
-  private void Start()
+  private void Awake()
   {
 		addExtraCardsToTrick = false;
 		deck = GetComponent<DeckManager>();

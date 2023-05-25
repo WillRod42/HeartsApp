@@ -19,10 +19,10 @@ public class PhaseManager : MonoBehaviour
 
   private void Awake()
   {
-		onDealingPhase = null;
-		onPassingPhase = null;
-		onPlayingPhase = null;
-		onScoringPhase = null;
+		// onDealingPhase = null;
+		// onPassingPhase = null;
+		// onPlayingPhase = null;
+		// onScoringPhase = null;
 
     currPhase = Phase.Dealing;
 		currRound = 1;
