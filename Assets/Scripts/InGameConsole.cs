@@ -17,8 +17,14 @@
 		{
 			if (filename != "")
 			{
+				if (!System.IO.Directory.Exists(".\\Logs"))
+				{
+					try { System.IO.Directory.CreateDirectory(".\\Logs"); }
+					catch { Debug.Log("Failed to create log directory"); }
+				}
+
 				// filename pattern: GameLogs-[number].txt
-				if (System.IO.File.Exists(filename))
+				while (System.IO.File.Exists(filename))
 				{
 					string[] filenameParts = filename.Split("-");
 					int fileNumber = int.Parse(filenameParts[1].Split(".")[0]) + 1;

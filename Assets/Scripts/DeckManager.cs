@@ -65,7 +65,7 @@ public class DeckManager : MonoBehaviour
 
 		// Initialize cards and card images
 		cards = new GameObject[DECK_LENGTH];
-    cardImages = Resources.LoadAll<Sprite>("English_pattern_playing_cards_deck");//
+    cardImages = Resources.LoadAll<Sprite>("English_pattern_playing_cards_deck");
 		for (int i = 0; i < DECK_LENGTH; i++)
 		{
 			GameObject newCard = new GameObject();
